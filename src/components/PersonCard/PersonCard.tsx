@@ -1,6 +1,8 @@
 import type { Person } from "../../types/game";
 import { FRIENDSHIP_LABELS, RARITY_STARS } from "../../game/labels";
 import { friendshipLevel, knownInfo } from "../../game/selectors";
+import { DEFAULT_RULES } from "../../game/rules";
+import { isDrifting } from "../../game/time";
 import { useGame } from "../GameContext";
 import { Portrait } from "./Portrait";
 
@@ -18,6 +20,11 @@ export function PersonCard({ person }: { person: Person }) {
   return (
     <button className={`person-card person-card--${rarity}`} onClick={() => openPerson(person.id)}>
       {isFresh("people", person.id) && <span className="new-ribbon">NEW</span>}
+      {isDrifting(state, DEFAULT_RULES, person.id) && (
+        <span className="drift-ribbon" title="오래 못 만나 소원해지는 중">
+          소원
+        </span>
+      )}
       <div className="person-card__art">
         <Portrait person={person} size="card" />
       </div>

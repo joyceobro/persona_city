@@ -4,12 +4,13 @@
 //  - 빠진 필드는 기본값으로 채운다
 //  - 시작 상태의 장소/사람/퀘스트는 항상 포함한다
 //  - 새로 생긴 해금 조건을 다시 계산한다 (settle)
+//  - v1 저장(행동력·지표·기한 이전)은 v2 기본값을 채워 이어서 한다
 
 import type { FriendshipLevel, GameContent, LoggedEvent, SaveData } from "../types/game";
 import { discoverPerson } from "./discovery";
-import { createInitialState } from "./gameState";
+import { createInitialState, initialStats } from "./gameState";
 import { settle, type Ctx } from "./progression";
-import { levelForXp } from "./rules";
+import { DEFAULT_RULES, levelForXp, STAT_IDS, STAT_MAX } from "./rules";
 
 export const SAVE_KEY = "persona-city/save/v1";
 
@@ -52,8 +53,17 @@ function ids(value: unknown, known: Set<string>): string[] {
   return [...new Set(value.filter((v): v is string => typeof v === "string" && known.has(v)))];
 }
 
-export function normalize(content: GameContent, data: Partial<SaveData>): SaveData {
-  if (data?.version !== 1) throw new Error("unsupported save version");
+function dayMap(value: unknown, known: Set<string>, fallback: number): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (!value || typeof value !== "object") return out;
+  for (const [id, day] of Object.entries(value)) {
+    if (known.has(id)) out[id] = Number.isInteger(day) && (day as number) >= 1 ? (day as number) : fallback;
+  }
+  return out;
+}
+
+export function normalize(content: GameContent, data: Partial<Omit<SaveData, "version">> & { version?: number }): SaveData {
+  if (data?.version !== 1 && data?.version !== 2) throw new Error("unsupported save version");
 
   const people = new Set(content.people.map((p) => p.id));
   const locations = new Set(content.locations.map((l) => l.id));
@@ -73,31 +83,52 @@ export function normalize(content: GameContent, data: Partial<SaveData>): SaveDa
     (c) => quests.has(c?.questId) && content.quests.find((q) => q.id === c.questId)?.solutions.some((s) => s.id === c.solutionId),
   );
   const completedIds = new Set(completedQuests.map((c) => c.questId));
+  const failedQuests = ids(data.failedQuests, quests).filter((id) => !completedIds.has(id));
+  const day = Math.max(1, Math.floor(Number(data.day)) || 1);
+
+  const stats = initialStats();
+  for (const id of STAT_IDS) {
+    const v = Number(data.stats?.[id]);
+    if (Number.isFinite(v)) stats[id] = Math.max(0, Math.min(STAT_MAX, Math.round(v)));
+  }
 
   const ctx: Ctx = {
     content,
     events: [],
+    rules: DEFAULT_RULES,
     state: {
-      version: 1,
+      version: 2,
       discoveredLocations: [...new Set([...content.start.locations, ...ids(data.discoveredLocations, locations)])],
       discoveredPeople,
       friendships,
       discoveredRelationships: ids(data.discoveredRelationships, relationships),
       discoveredInfo: ids(data.discoveredInfo, infos),
       currentQuestIds: [...new Set([...content.start.quests, ...ids(data.currentQuestIds, quests)])].filter(
-        (id) => !completedIds.has(id),
+        (id) => !completedIds.has(id) && !failedQuests.includes(id),
       ),
       completedQuests,
       seenTalkIds: ids(data.seenTalkIds, talks),
-      day: Math.max(1, Math.floor(Number(data.day)) || 1),
+      day,
       talkedToday: ids(data.talkedToday, people).filter((id) => discoveredPeople.includes(id)),
       exploredToday: ids(data.exploredToday, locations),
+      actionPoints: Number.isInteger(data.actionPoints)
+        ? Math.max(0, Math.min(DEFAULT_RULES.actionPointsPerDay, data.actionPoints as number))
+        : DEFAULT_RULES.actionPointsPerDay,
+      stats,
+      // v1 저장에는 공개일이 없다: 이어서 하는 날을 공개일로 본다
+      questUnlockedDay: dayMap(data.questUnlockedDay, quests, day),
+      worsenedQuests: ids(data.worsenedQuests, quests),
+      failedQuests,
+      lastContactDay: dayMap(data.lastContactDay, people, day),
+      ended: data.ended === true,
       log: (Array.isArray(data.log) ? data.log : []).filter(
         (entry) => Number.isInteger(entry?.day) && isValidLoggedEvent(entry.event),
       ),
     },
   };
   for (const id of content.start.people) discoverPerson(ctx, id, { silent: true });
+  for (const id of ctx.state.currentQuestIds) ctx.state.questUnlockedDay[id] ??= day;
+  for (const id of discoveredPeople) ctx.state.lastContactDay[id] ??= day;
   settle(ctx);
   return ctx.state;
 
@@ -109,6 +140,8 @@ export function normalize(content: GameContent, data: Partial<SaveData>): SaveDa
     switch (ev.type) {
       case "person_discovered":
       case "friendship_level_up":
+      case "friendship_level_down":
+      case "drifting":
         return has(people, "personId");
       case "info_discovered":
         return has(people, "personId") && has(infos, "infoId");
@@ -117,6 +150,8 @@ export function normalize(content: GameContent, data: Partial<SaveData>): SaveDa
       case "relationship_discovered":
         return has(relationships, "relationshipId");
       case "quest_unlocked":
+      case "quest_worsened":
+      case "quest_failed":
         return has(quests, "questId");
       case "quest_completed":
         return has(quests, "questId") && typeof ev.solutionId === "string";

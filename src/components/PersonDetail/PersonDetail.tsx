@@ -3,8 +3,10 @@ import { locationsById, peopleById } from "../../data";
 import { conditionHint } from "../../game/conditions";
 import { FRIENDSHIP_LABELS, relationshipLabelFor } from "../../game/labels";
 import { discoveredRelationshipsOf, friendshipLevel, knownInfo, knownQuestsOf } from "../../game/selectors";
-import { FRIENDSHIP_THRESHOLDS } from "../../game/rules";
+import { DEFAULT_RULES, FRIENDSHIP_THRESHOLDS, maxXpForLevel, SMALL_TALK_MAX_LEVEL } from "../../game/rules";
 import { canTalkToday } from "../../game/talk";
+import { areConditionsMet } from "../../game/conditions";
+import { isDrifting } from "../../game/time";
 import { useGame } from "../GameContext";
 import { Portrait } from "../PersonCard/Portrait";
 
@@ -30,6 +32,13 @@ export function PersonDetail({ personId, onClose }: Props) {
   // 목표/고민은 친구(2)가 되어야 보인다. 카드를 얻는 것과 사람을 아는 것은 다르다.
   const showInner = level >= 2;
   const canTalk = canTalkToday(state, person.id);
+  const talkedToday = state.talkedToday.includes(person.id);
+  const drifting = isDrifting(state, DEFAULT_RULES, person.id);
+  const daysApart = state.day - (state.lastContactDay[person.id] ?? state.day);
+  const xp = state.friendships[person.id]?.experience ?? 0;
+  const hasStory = person.talks.some((t) => !state.seenTalkIds.includes(t.id) && areConditionsMet(state, t.conditions));
+  // 잡담으로 갈 수 있는 끝에 닿았다: 이야기를 듣거나 함께 문제를 풀어야 더 가까워진다
+  const smallTalkCapped = !hasStory && xp >= maxXpForLevel(SMALL_TALK_MAX_LEVEL) && level < 3;
 
   return (
     <div className="overlay" onClick={onClose}>
@@ -54,10 +63,15 @@ export function PersonDetail({ personId, onClose }: Props) {
               </span>
               {level < 3 && (
                 <small className="muted">
-                  다음 단계까지 {FRIENDSHIP_THRESHOLDS[(level + 1) as 1 | 2 | 3] - (state.friendships[person.id]?.experience ?? 0)}
+                  다음 단계까지 {FRIENDSHIP_THRESHOLDS[(level + 1) as 1 | 2 | 3] - xp}
                 </small>
               )}
             </p>
+            {drifting && (
+              <p className="drift-note">
+                {daysApart}일째 못 만났다. 소원해지는 중 — 이야기를 나누면 다시 가까워진다.
+              </p>
+            )}
           </div>
         </header>
 
@@ -67,10 +81,23 @@ export function PersonDetail({ personId, onClose }: Props) {
           )}
           {canTalk ? (
             <button className="btn" onClick={() => dispatch({ type: "talk", personId: person.id })}>
-              대화하기
+              대화하기 <small className="btn__cost">기운 1</small>
             </button>
           ) : (
-            <p className="muted">오늘은 이미 이야기를 나눴다. 내일 다시 찾아가 보자.</p>
+            <p className="muted">
+              {state.ended
+                ? "이야기는 끝났다."
+                : talkedToday
+                  ? "오늘은 이미 이야기를 나눴다. 내일 다시 찾아가 보자."
+                  : "오늘은 기운이 다했다. 하루를 마치고 내일 찾아가 보자."}
+            </p>
+          )}
+          {smallTalkCapped && (
+            <p className="muted talk__hint">
+              {level < 2
+                ? "가벼운 이야기로는 여기까지다. 이 사람의 이야기를 더 듣거나, 함께 문제를 풀면 가까워진다."
+                : "더 가까워지려면 함께 문제를 풀어야 한다. 가벼운 이야기는 사이가 멀어지지 않게 해 준다."}
+            </p>
           )}
         </section>
 

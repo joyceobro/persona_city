@@ -172,7 +172,7 @@
         "id": "person_005_talk_2",
         "text": "\"주민센터 복지사님이 한부모 지원 서류를 대신 챙겨 주셨어요. 그분 아니었으면 몰랐을 거예요.\"",
         "conditions": [
-          { "type": "friendship", "personId": "person_005", "level": 2 },
+          { "type": "friendship", "personId": "person_005", "level": 1 },
           { "type": "person_discovered", "personId": "person_011" }
         ],
         "effects": [{ "type": "discover_relationship", "relationshipId": "rel_024" }]
@@ -315,7 +315,7 @@
         "id": "person_009_talk_2",
         "text": "\"홍혜선 선생 사진집? 한번 봤으면 좋겠네. 그런 필름은 책으로 남아야 해요.\"",
         "conditions": [
-          { "type": "friendship", "personId": "person_009", "level": 2 },
+          { "type": "friendship", "personId": "person_009", "level": 1 },
           { "type": "person_discovered", "personId": "person_014" }
         ],
         "effects": [{ "type": "discover_relationship", "relationshipId": "rel_021" }]
@@ -382,7 +382,7 @@
         "id": "person_011_talk_2",
         "text": "\"도서관에 자주 가는 이승찬 씨, 혼자 지내는데 요즘 말수가 너무 줄었어요. 뭐라도 할 일이 있으면 좋을 텐데.\"",
         "conditions": [
-          { "type": "friendship", "personId": "person_011", "level": 2 },
+          { "type": "friendship", "personId": "person_011", "level": 1 },
           { "type": "location_discovered", "locationId": "loc_library" }
         ],
         "effects": [
@@ -494,7 +494,7 @@
         "id": "person_014_talk_2",
         "text": "\"골목 찍는 이영만이라는 양반이 있어요. 나랑 같은 골목을 찍는데, 자꾸 나보다 먼저 와 있어. 얄미워.\"",
         "conditions": [
-          { "type": "friendship", "personId": "person_014", "level": 2 },
+          { "type": "friendship", "personId": "person_014", "level": 1 },
           { "type": "person_discovered", "personId": "person_018" }
         ],
         "effects": [{ "type": "discover_relationship", "relationshipId": "rel_016" }]
@@ -622,7 +622,7 @@
         "id": "person_017_talk_2",
         "text": "\"시장 노점 어르신 집 천장이 샌다고요? 구조를 봐야 알겠지만… 한번 가 보죠.\"",
         "conditions": [
-          { "type": "friendship", "personId": "person_017", "level": 2 },
+          { "type": "friendship", "personId": "person_017", "level": 1 },
           { "type": "person_discovered", "personId": "person_004" }
         ],
         "effects": [{ "type": "discover_relationship", "relationshipId": "rel_025" }]
@@ -652,7 +652,8 @@
       { "id": "person_018_info_6", "text": "블로그를 책으로 묶자는 제안을 받으면 거절하지 않을 것 같다.", "unlock": [{ "type": "friendship", "personId": "person_018", "level": 3 }] }
     ],
     "talks": [
-      { "id": "person_018_talk_1", "text": "\"창영이가 보냈구먼. 걔는 아직도 문장이 길어. …커피나 한잔할래요?\"" }
+      { "id": "person_018_talk_1", "text": "\"창영이가 보냈구먼. 걔는 아직도 문장이 길어. …커피나 한잔할래요?\"" },
+      { "id": "person_018_talk_2", "text": "\"이거 보여 준 사람 처음이에요. 2009년부터 쓴 노포 일기. 문 닫은 집이 절반이 넘어요.\"", "conditions": [{ "type": "friendship", "personId": "person_018", "level": 1 }] }
     ],
     "rarity": "uncommon",
     "source": { "dataset": "nemotron-personas-korea", "uuid": "48fc0dd5a59540c089023e8c2f7eeb35" }

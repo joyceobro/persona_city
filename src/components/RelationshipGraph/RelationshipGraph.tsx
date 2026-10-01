@@ -3,6 +3,8 @@ import type { Relationship, RelationshipType } from "../../types/game";
 import { locationsById, peopleById } from "../../data";
 import { portraitUrl } from "../../assets";
 import { relationshipLabelFor, RELATIONSHIP_LABELS } from "../../game/labels";
+import { DEFAULT_RULES } from "../../game/rules";
+import { isDrifting } from "../../game/time";
 import { useGame } from "../GameContext";
 import { computeEdgeRoutes, computeLayout, GRAPH_H, GRAPH_W, toGraphPoint } from "./layout";
 
@@ -95,10 +97,12 @@ export function RelationshipGraph() {
             const color = locationsById.get(p.locations[0])?.color ?? "#888";
             const url = portraitUrl(p);
             const dim = neighbors && !neighbors.has(p.id);
+            const drifting = isDrifting(state, DEFAULT_RULES, p.id);
+            const level = state.friendships[p.id]?.level ?? 0;
             return (
               <g
                 key={p.id}
-                className={`graph__node ${dim ? "is-dim" : ""} ${selected === p.id ? "is-selected" : ""} ${isFresh("people", p.id) ? "is-fresh" : ""}`}
+                className={`graph__node ${dim ? "is-dim" : ""} ${selected === p.id ? "is-selected" : ""} ${isFresh("people", p.id) ? "is-fresh" : ""} ${drifting ? "is-drifting" : ""}`}
                 transform={`translate(${pt.x} ${pt.y})`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -107,6 +111,9 @@ export function RelationshipGraph() {
                 role="button"
                 aria-label={p.name}
               >
+                {/* 나와의 거리: 친구 이상이면 바깥 고리, 소원해지면 점선 */}
+                {level >= 2 && <circle className="graph__bond" r={NODE_R + 5} />}
+                {level >= 3 && <circle className="graph__bond" r={NODE_R + 9} />}
                 <circle r={NODE_R} fill={`color-mix(in srgb, ${color} 18%, #fffdf8)`} stroke={color} />
                 {url ? (
                   <image href={url} x={-NODE_R} y={-NODE_R} width={NODE_R * 2} height={NODE_R * 2} clipPath="url(#node-clip)" preserveAspectRatio="xMidYMin slice" />
@@ -159,6 +166,20 @@ export function RelationshipGraph() {
                 ))}
               </ul>
               <p className="muted">선이 굵을수록 깊은 관계다.</p>
+              <ul className="legend">
+                <li>
+                  <svg width="28" height="16" aria-hidden>
+                    <circle cx="14" cy="8" r="6" className="legend__bond" />
+                  </svg>
+                  나와 친구 (고리가 두 겹이면 가까운 친구)
+                </li>
+                <li>
+                  <svg width="28" height="16" aria-hidden>
+                    <circle cx="14" cy="8" r="6" className="legend__bond legend__bond--drift" />
+                  </svg>
+                  오래 못 만나 소원해지는 중
+                </li>
+              </ul>
               {rels.length === 0 && <p className="muted">사람들과 이야기하다 보면 서로의 관계가 보이기 시작한다.</p>}
             </>
           )}

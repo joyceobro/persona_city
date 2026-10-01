@@ -1,4 +1,4 @@
-import type { FriendshipLevel, QuestCategory, Rarity, Relationship, RelationshipType } from "../types/game";
+import type { FriendshipLevel, QuestCategory, Rarity, Relationship, RelationshipType, StatId } from "../types/game";
 
 export const FRIENDSHIP_LABELS: Record<FriendshipLevel, string> = {
   0: "모르는 사람",
@@ -18,6 +18,18 @@ export const RELATIONSHIP_LABELS: Record<RelationshipType, string> = {
   rival: "라이벌",
   old_friend: "오랜 친구",
   hobby_friend: "취미 친구",
+};
+
+export const STAT_LABELS: Record<StatId, string> = {
+  vitality: "활기",
+  trust: "신뢰",
+  livelihood: "생계",
+};
+
+export const STAT_DESCRIPTIONS: Record<StatId, string> = {
+  vitality: "사람이 모이고 일이 벌어지는 정도",
+  trust: "이웃끼리 서로 기대는 정도",
+  livelihood: "가게와 일자리가 버티는 정도",
 };
 
 export const RARITY_STARS: Record<Rarity, number> = { common: 1, uncommon: 2, rare: 3 };

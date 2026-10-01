@@ -1,5 +1,5 @@
 import type { Condition, GameContent, SaveData } from "../types/game";
-import { FRIENDSHIP_LABELS, withJosa } from "./labels";
+import { FRIENDSHIP_LABELS, STAT_LABELS, withJosa } from "./labels";
 
 export function isConditionMet(state: SaveData, c: Condition): boolean {
   switch (c.type) {
@@ -14,9 +14,13 @@ export function isConditionMet(state: SaveData, c: Condition): boolean {
     case "info_discovered":
       return state.discoveredInfo.includes(c.infoId);
     case "quest_unlocked":
-      return state.currentQuestIds.includes(c.questId) || isQuestCompleted(state, c.questId);
+      return (
+        state.currentQuestIds.includes(c.questId) || isQuestCompleted(state, c.questId) || state.failedQuests.includes(c.questId)
+      );
     case "quest_completed":
       return isQuestCompleted(state, c.questId);
+    case "stat":
+      return state.stats[c.stat] >= c.min;
   }
 }
 
@@ -58,5 +62,7 @@ export function conditionHint(content: GameContent, state: SaveData, c: Conditio
       const title = quest && isConditionMet(state, { type: "quest_unlocked", questId: quest.id }) ? `'${quest.title}'` : "어떤 문제";
       return c.type === "quest_completed" ? `${withJosa(title, "을/를")} 해결하면` : `${title}에 관여하면`;
     }
+    case "stat":
+      return `동네의 ${withJosa(STAT_LABELS[c.stat], "이/가")} ${c.min} 이상이면`;
   }
 }

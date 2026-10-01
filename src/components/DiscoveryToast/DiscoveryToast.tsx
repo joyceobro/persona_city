@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { GameEvent } from "../../types/game";
 import { locationsById, peopleById, questsById, relationshipsById } from "../../data";
-import { FRIENDSHIP_LABELS, RELATIONSHIP_LABELS, withJosa } from "../../game/labels";
+import { FRIENDSHIP_LABELS, RELATIONSHIP_LABELS, STAT_LABELS, withJosa } from "../../game/labels";
 import { useGame } from "../GameContext";
 
 export type Toast = { id: number; event: GameEvent };
@@ -38,10 +38,27 @@ export function toMessage(e: GameEvent): Message | null {
       const p = peopleById.get(e.personId)!;
       return { kind: "friend", title: `${p.name} · ${FRIENDSHIP_LABELS[e.level]}`, body: "가까워졌다.", personId: p.id };
     }
+    case "friendship_level_down": {
+      const p = peopleById.get(e.personId)!;
+      return { kind: "drift", title: `${p.name} · ${FRIENDSHIP_LABELS[e.level]}`, body: "한동안 못 봤더니 사이가 멀어졌다.", personId: p.id };
+    }
+    case "drifting": {
+      const p = peopleById.get(e.personId)!;
+      return { kind: "drift", title: `${withJosa(p.name, "와/과")} 소원해지고 있다`, body: "며칠째 얼굴을 못 봤다. 내일부터 조금씩 멀어진다.", personId: p.id };
+    }
+    case "stat_changed":
+      return { kind: e.amount > 0 ? "stat-up" : "stat-down", title: `${STAT_LABELS[e.stat]} ${e.amount > 0 ? "+" : ""}${e.amount}` };
+    case "quest_worsened": {
+      const q = questsById.get(e.questId)!;
+      return { kind: "warn", title: `상황이 나빠졌다: ${q.title}`, body: q.worsen?.description };
+    }
+    case "quest_failed":
+      return { kind: "fail", title: "놓친 문제", body: questsById.get(e.questId)?.title };
     case "nothing_found":
       return { kind: "none", title: "새로운 얼굴은 보이지 않는다", body: "누군가와 더 친해지면 달라질지도." };
     case "talk":
     case "day_started":
+    case "game_ended":
       return null;
   }
 }

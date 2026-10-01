@@ -11,6 +11,8 @@ import { PersonDetail } from "../components/PersonDetail/PersonDetail";
 import { QuestPanel } from "../components/QuestPanel/QuestPanel";
 import { Journal, PeopleCollection } from "../components/Journal/Journal";
 import { RelationshipGraph } from "../components/RelationshipGraph/RelationshipGraph";
+import { StatusBar } from "../components/StatusBar/StatusBar";
+import { Ending } from "../components/Ending/Ending";
 
 type Tab = "city" | "people" | "relations" | "quests" | "journal";
 
@@ -53,6 +55,7 @@ export function GamePage() {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [moments, setMoments] = useState<Moment[]>([]);
   const [fresh, setFresh] = useState<Fresh>(EMPTY_FRESH);
+  const [showEnding, setShowEnding] = useState(false);
   const toastSeq = useRef(0);
 
   const dispatch = useCallback((action: GameAction) => {
@@ -65,6 +68,7 @@ export function GamePage() {
       if (e.type === "talk") setLastTalk({ personId: e.personId, text: e.text, isNew: e.isNew });
     }
     if (action.type === "end_day") setLastTalk(null);
+    if (events.some((e) => e.type === "game_ended")) setShowEnding(true);
 
     // 새 발견 표시
     const added: Partial<Fresh> = {};
@@ -81,10 +85,13 @@ export function GamePage() {
     }
 
     // 큰 연출(카드 획득, 퀘스트 완료)과 작은 알림을 나눈다. 같은 내용을 두 번 보여 주지 않는다.
+    // 지표 변화는 상단 바가 보여 주므로 알림을 띄우지 않는다.
     const newMoments = momentsFrom(events);
     if (newMoments.length) setMoments((prev) => [...prev, ...newMoments]);
     const questDone = newMoments.some((m) => m.kind === "quest");
-    const toastEvents = questDone ? [] : events.filter((e) => e.type !== "person_discovered" && toMessage(e));
+    const toastEvents = questDone
+      ? []
+      : events.filter((e) => e.type !== "person_discovered" && e.type !== "stat_changed" && toMessage(e));
     if (toastEvents.length) {
       setToasts((prev) => [...prev, ...toastEvents.map((event) => ({ id: ++toastSeq.current, event }))].slice(-6));
     }
@@ -129,6 +136,7 @@ export function GamePage() {
     setSelectedLocation(content.start.locations[0] ?? null);
     setTab("city");
     setConfirmReset(false);
+    setShowEnding(false);
   }, []);
 
   // 상세를 닫거나 다른 사람으로 넘어가면, 보던 사람의 카드와 새로 알게 된 정보를 확인한 것으로 본다
@@ -168,12 +176,18 @@ export function GamePage() {
           </h1>
           {revealAll && <span className="badge badge--dev">reveal=all</span>}
           <div className="day">
-            <span>
-              <strong>{state.day}</strong>일째 · 오늘 {state.talkedToday.length}명과 이야기
-            </span>
-            <button className="btn btn--ghost" onClick={() => dispatch({ type: "end_day" })}>
-              하루 마치기
-            </button>
+            {state.ended ? (
+              <button className="btn" onClick={() => setShowEnding(true)}>
+                결말 다시 보기
+              </button>
+            ) : (
+              <button
+                className={`btn ${state.actionPoints > 0 ? "btn--ghost" : "btn--pulse"}`}
+                onClick={() => dispatch({ type: "end_day" })}
+              >
+                하루 마치기
+              </button>
+            )}
             {!revealAll &&
               (confirmReset ? (
                 <span className="reset-confirm">
@@ -192,6 +206,8 @@ export function GamePage() {
               ))}
           </div>
         </header>
+
+        <StatusBar />
 
         <nav className="tabs" role="tablist">
           {TABS.map((t) => (
@@ -220,6 +236,7 @@ export function GamePage() {
 
         {openPersonId && <PersonDetail personId={openPersonId} onClose={closePerson} />}
         {moments[0] && <MomentOverlay moment={moments[0]} onClose={closeMoment} />}
+        {showEnding && !moments[0] && <Ending onClose={() => setShowEnding(false)} onRestart={resetGame} />}
         <footer className="app-footer">
           인물 원형: NVIDIA Nemotron-Personas-Korea (CC BY 4.0) · 모든 인물은 합성 데이터에서 만든 가상 인물입니다.
         </footer>

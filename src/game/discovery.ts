@@ -3,6 +3,7 @@
 import type { SaveData } from "../types/game";
 import { areConditionsMet } from "./conditions";
 import { applyEffects, type Ctx } from "./progression";
+import { canAct } from "./time";
 
 export function discoverPerson(ctx: Ctx, personId: string, options: { silent?: boolean } = {}): void {
   const { state, content } = ctx;
@@ -12,6 +13,7 @@ export function discoverPerson(ctx: Ctx, personId: string, options: { silent?: b
 
   state.discoveredPeople.push(personId);
   state.friendships[personId] = { personId, level: 0, experience: 0 };
+  state.lastContactDay[personId] = state.day;
   // 조건 없는 정보는 카드를 얻는 순간 공개된다 (이벤트 없이: 카드 획득 자체가 이벤트)
   for (const info of person.discoverableInfo) {
     if (!info.unlock?.length && !state.discoveredInfo.includes(info.id)) state.discoveredInfo.push(info.id);
@@ -42,17 +44,19 @@ export function discoverInfo(ctx: Ctx, infoId: string): void {
   ctx.events.push({ type: "info_discovered", infoId, personId: person.id });
 }
 
+/** 오늘 이 장소를 탐험할 수 있나 (행동력 포함) */
 export function canExploreToday(state: SaveData, locationId: string): boolean {
-  return state.discoveredLocations.includes(locationId) && !state.exploredToday.includes(locationId);
+  return canAct(state) && state.discoveredLocations.includes(locationId) && !state.exploredToday.includes(locationId);
 }
 
 /**
  * 장소마다 하루 한 번. 탐험 한 번에 새 인물은 최대 한 명.
  * 조건을 만족하는 사람이 없으면 nothing_found.
+ * @returns 탐험했으면 true (행동력을 쓴다)
  */
-export function explore(ctx: Ctx, locationId: string): void {
+export function explore(ctx: Ctx, locationId: string): boolean {
   const { state, content } = ctx;
-  if (!canExploreToday(state, locationId)) return;
+  if (!canExploreToday(state, locationId)) return false;
   state.exploredToday.push(locationId);
 
   const found = content.people.find(
@@ -63,4 +67,5 @@ export function explore(ctx: Ctx, locationId: string): void {
   );
   if (found) discoverPerson(ctx, found.id);
   else ctx.events.push({ type: "nothing_found", locationId });
+  return true;
 }
