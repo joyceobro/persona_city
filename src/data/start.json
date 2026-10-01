@@ -1,0 +1,6 @@
+{
+  "locations": ["loc_cafe", "loc_plaza"],
+  "people": ["person_001", "person_015", "person_016"],
+  "quests": ["quest_001"],
+  "relationships": []
+}

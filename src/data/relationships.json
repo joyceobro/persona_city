@@ -1,0 +1,192 @@
+[
+  { "id": "rel_001", "from": "person_001", "to": "person_002", "type": "hobby_friend", "strength": 3, "description": "주말마다 함께 동네 빵집을 도는 베이커리 투어 친구." },
+  { "id": "rel_002", "from": "person_005", "to": "person_002", "type": "business", "strength": 2, "description": "떡집에서 쓰는 쌀가루를 제빵사에게 나눠 준다. 이름이 비슷해 서로 웃는다." },
+  {
+    "id": "rel_003", "from": "person_006", "to": "person_004", "type": "neighbor", "strength": 3,
+    "description": "상인회 총무와 최고참 노점상. 자릿세 문제로 투닥거리지만 서로를 제일 잘 안다.",
+    "discoverConditions": [
+      { "type": "friendship", "personId": "person_004", "level": 1 },
+      { "type": "friendship", "personId": "person_006", "level": 1 }
+    ]
+  },
+  { "id": "rel_004", "from": "person_006", "to": "person_003", "type": "business", "strength": 2, "description": "잡화점 커피 코너의 주인과 매니저. 장부 방식을 두고 매일 옥신각신한다." },
+  { "id": "rel_005", "from": "person_004", "to": "person_005", "type": "neighbor", "strength": 3, "description": "새벽 네 시에 가장 먼저 불을 켜는 시장 옆자리 이웃." },
+  { "id": "rel_006", "from": "person_009", "to": "person_008", "type": "business", "strength": 3, "description": "골목 기록집 원고를 책으로 묶어 주겠다는 편집자와 작가." },
+  { "id": "rel_007", "from": "person_007", "to": "person_008", "type": "friend", "strength": 3, "description": "목요일 글쓰기 모임을 함께 꾸리는 사서와 최고령 회원." },
+  { "id": "rel_008", "from": "person_007", "to": "person_019", "type": "friend", "strength": 1, "description": "사서가 가끔 자료 정리를 부탁하는 단골 이용자." },
+  { "id": "rel_009", "from": "person_018", "to": "person_016", "type": "mentor", "strength": 4, "description": "기사 쓰는 법을 가르친 선배와 후배 기자." },
+  { "id": "rel_010", "from": "person_016", "to": "person_010", "type": "business", "strength": 2, "description": "보도자료를 주고받는 기자와 주민센터 막내." },
+  {
+    "id": "rel_011", "from": "person_010", "to": "person_011", "type": "coworker", "strength": 2,
+    "description": "막내 주무관이 서류를, 생활지원사가 현장을 맡는 주민센터 콤비.",
+    "discoverConditions": [
+      { "type": "friendship", "personId": "person_010", "level": 1 },
+      { "type": "friendship", "personId": "person_011", "level": 1 }
+    ]
+  },
+  { "id": "rel_012", "from": "person_011", "to": "person_015", "type": "friend", "strength": 4, "description": "일주일에 한 번 안부를 핑계로 수선집에 들르는 사이. 사실은 서로가 서로의 말벗이다." },
+  { "id": "rel_013", "from": "person_011", "to": "person_019", "type": "neighbor", "strength": 2, "description": "생활지원사가 조용히 신경 쓰고 있는 혼자 사는 이웃." },
+  { "id": "rel_014", "from": "person_012", "to": "person_014", "type": "old_friend", "strength": 4, "description": "수십 년 전 촬영장에서 만난 연출 보조와 스틸 사진가." },
+  { "id": "rel_015", "from": "person_012", "to": "person_013", "type": "mentor", "strength": 3, "description": "일이 끊긴 뒤에도 연락해 주는 현장 선배." },
+  { "id": "rel_016", "from": "person_014", "to": "person_018", "type": "rival", "strength": 2, "description": "같은 골목을 찍는 두 기록가. 서로 얄밉다고 하면서 서로의 사진을 다 봤다." },
+  { "id": "rel_017", "from": "person_017", "to": "person_015", "type": "business", "strength": 2, "description": "바지 기장을 줄이러 왔다가 상가 기둥에 반한 단골 손님." },
+  { "id": "rel_018", "from": "person_020", "to": "person_013", "type": "hobby_friend", "strength": 2, "description": "공간과 소품 이야기로 한 시간을 보내는 취향 친구." },
+  { "id": "rel_019", "from": "person_012", "to": "person_001", "type": "business", "strength": 2, "description": "카페에서 작은 상영회를 열자고 제안한 단골." },
+  {
+    "id": "rel_020", "from": "person_015", "to": "person_008", "type": "old_friend", "strength": 5,
+    "description": "해온극장 앞에서 함께 사진을 찍었던 동네 언니 동생.",
+    "unlocks": [{ "type": "discover_info", "infoId": "person_015_info_5" }]
+  },
+  { "id": "rel_021", "from": "person_009", "to": "person_014", "type": "business", "strength": 2, "description": "사진집을 책으로 묶고 싶어 하는 편집자와 사진가." },
+  { "id": "rel_022", "from": "person_003", "to": "person_001", "type": "rival", "strength": 2, "description": "매니저 지원에서 떨어진 전직 조리사와 그를 '너무 깐깐하다'고 한 바리스타." },
+  { "id": "rel_023", "from": "person_002", "to": "person_020", "type": "mentor", "strength": 1, "description": "구움과자를 배우고 싶은 열아홉 살과 쑥스러워서 못 가르치는 제빵사." },
+  { "id": "rel_024", "from": "person_011", "to": "person_005", "type": "neighbor", "strength": 3, "description": "한부모 지원 서류를 대신 챙겨 준 생활지원사." },
+  { "id": "rel_025", "from": "person_017", "to": "person_004", "type": "business", "strength": 2, "description": "비 새는 월세방 천장을 봐 주기로 한 감리사. 수리비 대신 제철 과일을 받는다." },
+  {
+    "id": "rel_026", "from": "person_004", "to": "person_015", "type": "old_friend", "strength": 4, "description": "극장 앞 군밤 노점 시절부터 알던 사이. 서로의 젊은 얼굴을 기억한다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_004", "level": 2},
+      {"type": "friendship", "personId": "person_015", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_027", "from": "person_005", "to": "person_001", "type": "business", "strength": 2, "description": "카페에 말차 크림치즈떡을 납품하는 떡집. 의외의 조합이 단골을 만들었다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_005", "level": 2},
+      {"type": "friendship", "personId": "person_001", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_028", "from": "person_006", "to": "person_005", "type": "neighbor", "strength": 2, "description": "상인회 총무가 떡집 새벽 작업 소음 민원을 막아 준 적이 있다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_006", "level": 2},
+      {"type": "friendship", "personId": "person_005", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_029", "from": "person_003", "to": "person_004", "type": "hobby_friend", "strength": 3, "description": "새벽 저수지에서 우연히 옆자리에 앉은 뒤로 낚시 친구가 되었다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_003", "level": 2},
+      {"type": "friendship", "personId": "person_004", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_030", "from": "person_008", "to": "person_014", "type": "business", "strength": 3, "description": "오래전 같은 지역 문예지에 글과 사진을 나란히 실었던 사이.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_008", "level": 2},
+      {"type": "friendship", "personId": "person_014", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_031", "from": "person_008", "to": "person_011", "type": "friend", "strength": 3, "description": "복지관 글쓰기 봉사에서 만난 작가와 생활지원사. 어르신들의 이야기를 함께 받아 적는다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_008", "level": 1},
+      {"type": "friendship", "personId": "person_011", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_032", "from": "person_009", "to": "person_018", "type": "old_friend", "strength": 3, "description": "대학 신문사 선후배. 블로그를 책으로 묶자는 이야기를 몇 년째 미루고 있다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_009", "level": 2},
+      {"type": "friendship", "personId": "person_018", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_033", "from": "person_010", "to": "person_020", "type": "family", "strength": 4, "description": "사촌 남매. 홍준은 하연의 사업계획서 빈칸을 몰래 걱정한다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_010", "level": 2},
+      {"type": "friendship", "personId": "person_020", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_034", "from": "person_011", "to": "person_014", "type": "friend", "strength": 2, "description": "밤에 잠이 안 올 때 서로 전화하는 사이. 둘 다 외롭다는 말은 하지 않는다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_011", "level": 3},
+      {"type": "friendship", "personId": "person_014", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_035", "from": "person_012", "to": "person_016", "type": "business", "strength": 2, "description": "극장 폐관 취재의 첫 번째 인터뷰이와 기자.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_012", "level": 1},
+      {"type": "friendship", "personId": "person_016", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_036", "from": "person_017", "to": "person_013", "type": "mentor", "strength": 2, "description": "공간 도면을 봐 주는 감리사와 무대 디자이너 지망생.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_013", "level": 2},
+      {"type": "friendship", "personId": "person_017", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_037", "from": "person_015", "to": "person_013", "type": "mentor", "strength": 3, "description": "무대의상 바느질을 가르쳐 주는 수선집 할머니와 젊은 디자이너.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_015", "level": 2},
+      {"type": "friendship", "personId": "person_013", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_038", "from": "person_016", "to": "person_007", "type": "business", "strength": 2, "description": "옛 신문 자료를 찾아 달라는 기자와 깐깐한 사서.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_016", "level": 1},
+      {"type": "friendship", "personId": "person_007", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_039", "from": "person_017", "to": "person_010", "type": "business", "strength": 2, "description": "건축 허가 서류를 주고받는 감리사와 주무관.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_017", "level": 1},
+      {"type": "friendship", "personId": "person_010", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_040", "from": "person_018", "to": "person_019", "type": "hobby_friend", "strength": 2, "description": "도서관 사진 강좌에서 만난 혼자 사는 두 중년. 말없이 같이 걷는다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_018", "level": 2},
+      {"type": "friendship", "personId": "person_019", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_041", "from": "person_019", "to": "person_014", "type": "business", "strength": 2, "description": "사진 한 장 한 장에 미술사 해설을 붙여 주기로 한 사이.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_019", "level": 2},
+      {"type": "friendship", "personId": "person_014", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_042", "from": "person_020", "to": "person_001", "type": "neighbor", "strength": 2, "description": "카페 창가 자리를 두고 매일 눈인사하는 단골과 바리스타.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_020", "level": 1},
+      {"type": "friendship", "personId": "person_001", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_043", "from": "person_003", "to": "person_010", "type": "business", "strength": 1, "description": "주민센터 일자리 창구에서 이력서를 봐 준 주무관.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_003", "level": 1},
+      {"type": "friendship", "personId": "person_010", "level": 1}
+    ]
+  },
+  {
+    "id": "rel_044", "from": "person_009", "to": "person_007", "type": "business", "strength": 2, "description": "향토자료실 단골 이용자와 사서. 편집자는 분류표에 불만이 많다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_009", "level": 1},
+      {"type": "friendship", "personId": "person_007", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_045", "from": "person_011", "to": "person_004", "type": "neighbor", "strength": 2, "description": "당뇨 관리 안부를 핑계로 노점에 들르는 생활지원사.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_011", "level": 2},
+      {"type": "friendship", "personId": "person_004", "level": 2}
+    ]
+  },
+  {
+    "id": "rel_046", "from": "person_012", "to": "person_015", "type": "old_friend", "strength": 3, "description": "극장 영사실에서 알던 사이. 병열은 경자의 남편에게 필름 거는 법을 배웠다.",
+    "discoverConditions": [
+      {"type": "friendship", "personId": "person_012", "level": 2},
+      {"type": "friendship", "personId": "person_015", "level": 3}
+    ]
+  }
+]

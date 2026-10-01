@@ -1,0 +1,149 @@
+{
+  "artTest": ["person_001", "person_015", "person_016"],
+  "style": "soft muted watercolor illustration with thin delicate ink lines, modern naturalist field-guide collection card style, warm paper tones, gentle natural daylight, realistic proportions, understated and calm",
+  "composition": "upper-body portrait of one person, head, shoulders and upper chest, slight three-quarter angle facing the viewer, face in the upper third of the frame, top of the head fully visible with a little space above, square 1:1",
+  "background": "plain flat off-white background (#FFFDF8), no scenery, no shadow on the background",
+  "negative": "text, letters, watermark, signature, logo, frame, border, background scenery, room interior, multiple people, anime, manga, chibi, 3D render, glossy plastic look, fantasy costume, heavy makeup, glamour, exaggerated expression, caricature, cropped head, hands covering the face, extra fingers",
+  "people": {
+    "person_001": {
+      "subject": "38-year-old Korean woman, a neighborhood cafe barista",
+      "look": "shoulder-length black hair loosely tied back with a few strands falling out, sharp observant eyes",
+      "outfit": "linen apron over a navy striped cotton shirt, sleeves pushed up",
+      "prop": "holding a gooseneck pour-over kettle",
+      "expression": "relaxed half-smile, as if she has already guessed your order"
+    },
+    "person_002": {
+      "subject": "26-year-old Korean woman, a young baker",
+      "look": "short bob tucked under a cotton bandana",
+      "outfit": "white baker's jacket with a light dusting of rice flour",
+      "prop": "holding a small tray of golden baked cookies",
+      "expression": "shy, slightly nervous smile"
+    },
+    "person_003": {
+      "subject": "61-year-old Korean man, a retired drinks maker looking for work",
+      "look": "neatly combed gray hair, rimless glasses, upright posture",
+      "outfit": "pressed collared shirt under a buttoned gray cardigan",
+      "prop": "holding a folded newspaper open to the job listings",
+      "expression": "composed and dignified, with a hint of tension"
+    },
+    "person_004": {
+      "subject": "65-year-old Korean man, a veteran street market vendor",
+      "look": "sun-weathered face, short cropped gray hair",
+      "outfit": "padded work vest over a faded work shirt, cotton work gloves",
+      "prop": "holding a few tangerines in one gloved hand",
+      "expression": "gruff at first glance but kind around the eyes"
+    },
+    "person_005": {
+      "subject": "33-year-old Korean woman, a rice cake maker at the market",
+      "look": "hair pulled back into a low bun, a few loose strands",
+      "outfit": "sleeves rolled up, plain apron over a simple top",
+      "prop": "holding a round bamboo steamer basket with faint steam rising",
+      "expression": "quiet, determined, tired but steady"
+    },
+    "person_006": {
+      "subject": "48-year-old Korean man, owner of a small general store",
+      "look": "stocky build, short black hair",
+      "outfit": "plain polo shirt, a pencil tucked behind one ear",
+      "prop": "holding a worn handwritten ledger notebook",
+      "expression": "reserved, blunt, trustworthy"
+    },
+    "person_007": {
+      "subject": "28-year-old Korean woman, a public librarian",
+      "look": "straight black shoulder-length hair, round glasses",
+      "outfit": "simple knit sweater with a staff ID lanyard",
+      "prop": "holding a hardcover book with a blue cover",
+      "expression": "attentive and precise, a small polite smile"
+    },
+    "person_008": {
+      "subject": "76-year-old Korean woman, a local essayist",
+      "look": "soft white permed hair, reading glasses on a beaded chain",
+      "outfit": "a warm knitted cardigan over a blouse",
+      "prop": "holding a fountain pen and a few handwritten manuscript pages",
+      "expression": "gentle, slightly wistful smile"
+    },
+    "person_009": {
+      "subject": "60-year-old Korean man, a veteran book editor",
+      "look": "salt-and-pepper hair, half-rim glasses pushed down his nose",
+      "outfit": "shirt sleeves rolled up",
+      "prop": "holding printed page proofs and a red proofreading pen",
+      "expression": "amused, as if about to point out a typo"
+    },
+    "person_010": {
+      "subject": "21-year-old Korean man, a junior clerk at the community center",
+      "look": "young face, neat short hair",
+      "outfit": "light blue office shirt with an employee ID lanyard",
+      "prop": "holding a clipboard with forms",
+      "expression": "polite, efficient, a little eager to go home on time"
+    },
+    "person_011": {
+      "subject": "65-year-old Korean woman, a community care worker",
+      "look": "short permed graying hair",
+      "outfit": "warm fleece vest with a small name tag",
+      "prop": "holding a thermos and a small wrapped rice cake",
+      "expression": "caring warm smile that hides quiet tiredness"
+    },
+    "person_012": {
+      "subject": "60-year-old Korean man, a veteran assistant director for film and broadcast",
+      "look": "graying hair slightly long at the back",
+      "outfit": "canvas field jacket with many pockets, a headset hanging around his neck",
+      "prop": "holding a rolled-up script",
+      "expression": "easygoing, knowing smile"
+    },
+    "person_013": {
+      "subject": "23-year-old Korean woman, a stage set designer between jobs",
+      "look": "messy bangs, a pencil tucked into her hair",
+      "outfit": "oversized denim shirt with small paint marks",
+      "prop": "holding a small cardboard scale model of a theater stage",
+      "expression": "restless but hopeful"
+    },
+    "person_014": {
+      "subject": "82-year-old Korean woman, a working photographer",
+      "look": "elegant short silver hair, bright lively eyes",
+      "outfit": "a soft silk scarf over a simple blouse",
+      "prop": "holding a vintage rangefinder film camera at chest height",
+      "expression": "lively and curious, about to start talking"
+    },
+    "person_015": {
+      "subject": "84-year-old Korean woman, owner of a small alterations and tailoring shop",
+      "look": "small frame, gray hair in a neat bun, reading glasses low on her nose",
+      "outfit": "plain blouse with a measuring tape draped around her neck, a pincushion on her wrist",
+      "prop": "holding a needle and thread",
+      "expression": "warm grandmotherly smile"
+    },
+    "person_016": {
+      "subject": "31-year-old Korean man, a local newspaper reporter",
+      "look": "short tousled hair, black-framed glasses",
+      "outfit": "plain gray hoodie under a dark casual jacket",
+      "prop": "holding a small reporter's notebook and a ballpoint pen",
+      "expression": "analytical and curious, listening closely"
+    },
+    "person_017": {
+      "subject": "42-year-old Korean man, a building construction supervisor",
+      "look": "short neat hair, light stubble",
+      "outfit": "high-visibility safety vest over a collared shirt",
+      "prop": "rolled blueprints under one arm, a white hard hat held at his side",
+      "expression": "calm and attentive"
+    },
+    "person_018": {
+      "subject": "56-year-old Korean man, an independent chronicler of old alleys and shops",
+      "look": "longish gray hair tucked behind his ears",
+      "outfit": "faded denim shirt",
+      "prop": "a compact camera hanging on a strap",
+      "expression": "reserved, dry half-smile"
+    },
+    "person_019": {
+      "subject": "49-year-old Korean man with an art history background, currently unemployed",
+      "look": "thin, slightly hunched shoulders",
+      "outfit": "neat but worn blazer over a plain sweater",
+      "prop": "holding an art exhibition catalog against his chest",
+      "expression": "cautious and shy, avoiding a direct gaze"
+    },
+    "person_020": {
+      "subject": "19-year-old Korean woman figuring out what to do after school",
+      "look": "long hair with a small hair clip",
+      "outfit": "oversized pastel hoodie, a badminton racket strap over one shoulder",
+      "prop": "holding a smartphone",
+      "expression": "bright, a little restless"
+    }
+  }
+}

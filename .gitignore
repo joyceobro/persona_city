@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env*
+# 원본 페르소나 데이터셋 (1.9GB)
+nvidia_korea_persona/

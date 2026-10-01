@@ -1,0 +1,125 @@
+# Persona City — 진행 현황
+
+마지막 작업: 2026-09-29 · 기준 문서: `MVP.md`
+
+## 한눈에 보기
+
+- **MVP 문서의 Phase 1~9 완료.** MVP 완료 조건(§32)을 모두 충족한다.
+- **다음 할 일:** ① 아트 테스트(시작 인물 3명 초상화) → ② 첫 플레이 테스트(§29)
+- 검증 상태: `npm run typecheck` 통과 · `npm run validate:data` 오류/경고 0건 · 저장 테스트 12/12
+
+## 실행 방법
+
+```bash
+npm install
+npm run dev                  # http://localhost:5173/
+                             # http://localhost:5173/?reveal=all  → 모든 콘텐츠가 열린 미리보기 (개발용, 저장 안 함)
+npm run typecheck
+npm run validate:data        # 참조 무결성 + 도달 가능성 시뮬레이션 + 밸런스 경고
+npm run prompts:portraits    # 초상화 프롬프트 재생성
+npm run extract:candidates   # (Python) 데이터셋 → NPC 후보
+npm run generate:npcs        # (Python) 후보 → NPC 초안
+```
+
+Python 스크립트에는 `pyarrow` 가 필요하다 (`pip install -r scripts/import-personas/requirements.txt`). 현재 전역 Python 에 설치되어 있다.
+
+## 단계별로 한 일
+
+| 단계 | 내용 |
+|---|---|
+| Phase 1 분석 | 데이터셋 = NVIDIA Nemotron-Personas-Korea (parquet 9개, 100만 명, CC BY 4.0). 분포 분석: 무직 37%, 50~60대 비중이 큼, 직업 1,632종 |
+| 후보 추출 | 장소별 직업 화이트리스트 + 연령/성별/직업 층화 샘플링 → 후보 58명 → **20명 확정** |
+| Phase 2 데이터 | `src/types/game.ts`, `src/data/*.json`, Vite + React + TS 뼈대 |
+| Phase 3 화면 | 도시 지도, 5:7 인물 카드, 인물 상세, 문제, 기록 |
+| 그래픽 준비 | 카드 레이어 구조, 에셋 경로 규칙(`src/assets/people/{id}.webp`), `ART.md` |
+| Phase 4 게임 로직 | `reduce(콘텐츠, 상태, 액션) → (새 상태, 이벤트)` 순수 함수 엔진. 탐험, 대화, 친밀도, 해금, 퀘스트 해결 |
+| Phase 5 저장 | localStorage. 불러올 때 현재 콘텐츠 기준으로 정리(없어진 ID 제거, 해금 재계산) |
+| Phase 6 파이프라인 문서 | `scripts/README.md`, 화면 하단 데이터셋 출처 표기 |
+| Phase 7 관계 | 관계 46개, SVG 관계도(장소 기반 힘 레이아웃), `validate:data` |
+| Phase 8 퀘스트 | 퀘스트 8개 / 해결 방법 20개 (모두 복수 해결), 밸런스 조정 |
+| Phase 9 연출 | 카드 뒤집기, 길 그리기, 관계선 그리기, 해결 도장, 정보 강조, 새 소식 점, 발견 기록 탭 |
+| 초상화 프롬프트 | 20명 프롬프트 생성 (`generated/portrait-prompts.md`) |
+| 플레이 테스트 1차 (2026-09-30) | 브라우저로 1~2일째 플레이. 1일째 첫 탐험이 빈손이던 문제, 첫 퀘스트 보상이 약한 문제, 관계선이 남의 노드를 지나가는 문제 수정 (아래 참고) |
+
+## 콘텐츠 현황
+
+- **도시:** 해온시 오래된 주택가. 장소 6곳 — 골목 끝 카페, 중앙광장(시작), 해온시장, 해온 구립도서관, 주민센터, 해온극장
+- **인물 20명** (남녀 10:10, 19~84세). 1인당 공개 정보 5~6개, 대화 1~4개
+  - 시작 인물: 인주은(카페), 권경자(수선집), 김창영(기자)
+- **관계 46개**
+- **퀘스트 8개:** 새 메뉴의 짝꿍 · 오래된 극장을 살려라(메인) · 사랑방 커피 코너 · 골목 기록집 · 비 새는 집 · 무대 뒤의 일자리 · 말수가 줄어든 이웃 · 밤마다 걸려 오는 전화
+- **숨은 이야기:** 권경자의 남편은 해온극장의 영사기사였다. 이동정과 오랜 친구 관계를 발견하면 드러나고, 이병열과의 관계로 이어진다.
+- **예상 플레이 길이:** 모든 행동을 다 하는 플레이어 기준 11일, 약 250번 행동 (20~30분 목표)
+
+## 게임 규칙 (`src/game/rules.ts`)
+
+- 친밀도: 0 모르는 사람 / 1 아는 사람(경험치 10) / 2 친구(40) / 3 가까운 친구(90)
+- 대화: 한 사람과 **하루 1회**. 새 대화 +15, 새 대화가 없으면 잡담 +10
+- 탐험: 장소마다 **하루 1회**, 한 번에 새 인물 최대 1명
+- "하루 마치기"로 다음 날로 넘어간다
+- 퀘스트 해결, 대화 효과, 관계 발견이 새 사람/장소/관계/정보/퀘스트를 연다
+
+## MVP 문서와 다르게 정한 것 (이유)
+
+| 결정 | 이유 |
+|---|---|
+| JSON 콘텐츠에 `discovered`/`status` 같은 진행 상태를 넣지 않음 | 콘텐츠와 게임 상태 분리 (원칙 4). 상태는 SaveData 에만 |
+| `Location.personIds` 제거, `Person.locations` 한쪽만 | 양쪽에 적으면 어긋날 수 있음 |
+| 조건/효과를 `Condition`/`Effect` 유니온 하나로 통일 | 정보 해금, 요구조건, 보상, 대화 효과를 같은 로직으로 처리 |
+| `Person.talks` 추가 | "카페 직원 → 시장 소개" 같은 흐름을 데이터로 표현 |
+| "하루" 규칙 도입 | 클릭 연타로 친밀도를 올리는 것을 막고, 친밀도 2가 필요한 콘텐츠에 닿을 수 있게 |
+| 에셋을 `public/images/` 대신 `src/assets/` 에 | 빌드 시 존재하는 파일만 잡혀서 없는 그림 요청(404)이 없음 |
+| 스크립트 실행기로 `tsx` 추가 (개발 의존성) | 검증 스크립트가 실제 게임 엔진을 그대로 불러와 시뮬레이션 |
+
+## 주요 파일
+
+```text
+MVP.md                     원래 기획 문서
+ART.md                     아트 디렉션: 제작 시점, 스타일, 에셋 규격, 초상화 작업 순서
+PROGRESS.md                이 문서
+scripts/README.md          데이터 파이프라인과 라이선스
+src/types/game.ts          데이터 모델 (콘텐츠, SaveData, 액션, 이벤트)
+src/data/                  people / locations / relationships / quests / start .json
+src/game/                  엔진: gameState(reduce) · discovery · progression · relationships · quests · talk · rules · save · conditions · selectors · labels
+src/components/            CityMap · PersonCard · PersonDetail · RelationshipGraph · QuestPanel · Journal · DiscoveryToast · Moments
+src/pages/GamePage.tsx     화면 조립, 알림/연출 대기열, 새 소식 표시
+src/assets/                people/, locations/ — 그림을 ID 파일명으로 넣으면 자동 반영
+scripts/import-personas/   후보 추출 (Python)
+scripts/generate-game-data/ 선택 목록 + NPC 초안 생성 (Python)
+scripts/generate-portraits/ 인물 외형 + 프롬프트 생성 (Python)
+scripts/validate-data/     데이터 검증 (TS, tsx)
+generated/                 스크립트 출력물 (후보, 초안, 프롬프트). 게임 데이터 아님
+nvidia_korea_persona/      원본 데이터셋 (약 2GB)
+```
+
+## 플레이 테스트 1차에서 고친 것 (2026-09-30)
+
+| 문제 | 수정 |
+|---|---|
+| 1일째 첫 행동(카페 탐험)에서 아무도 안 나옴. 대화를 먼저 해야 정유아가 나오는 순서 함정 | 정유아 `discoverConditions` 제거 → 첫 탐험 = 첫 발견. 인주은·정유아 첫 대사를 어느 순서로 만나도 어울리게 수정 |
+| 첫 퀘스트 보상이 친밀도·정보뿐이라 "해결하면 새 사람이 열린다"가 안 보임 | `quest_001` 보상에 이태현 발견 추가 |
+| 관계도에서 인주은–정유아 선이 김창영 노드를 관통 (직선 46개 중 33개가 남의 노드 40px 이내 통과) | `computeEdgeRoutes`: 막히는 선은 가운데를 밀어낸 곡선으로. 여러 장소 인물은 첫 장소에 앵커 (평균 좌표 대신) |
+| "'새 메뉴의 짝꿍'를" 조사 오류 | `withJosa` 가 끝 따옴표를 건너뛰고 받침 판단 |
+
+이제 1일째 흐름: 카페 탐험 → 정유아 → 대화 → 새 메뉴의 짝꿍 해결 → 이태현 (MVP.md §29 흐름이 1일째 안에 완성).
+검증 경고 1건: `quest_001` 을 1일째에 풀면 두 번째 해결법(떡집 조주은, 4일째 등장)은 보지 못한다. 튜토리얼 퀘스트라 허용.
+
+보류 (사용자 플레이에서 문제로 느껴지면 고침): 1일째 첫 문제를 풀면 2일째 메인 퀘스트가 열릴 때까지 문제 탭이 빈다. 고친다면 `QuestPanel.tsx` 의 빈 화면 문구를 다음 행동을 알려 주는 말로 바꾸는 정도.
+
+## 다음에 할 일
+
+1. **아트 테스트:** `generated/portrait-prompts.md` 의 앞 3명(인주은, 권경자, 김창영) 초상화 생성
+   → 배경 제거 → 1024×1024 WebP → `src/assets/people/person_001.webp` 등으로 저장. 순서는 `ART.md` 5절 참고.
+2. **첫 플레이 테스트 (MVP.md §29):** 1~2일째는 1차로 확인·수정함. 사용자가 처음부터 20~30분 플레이하며 확인할 것
+   - 성공 기준 7가지가 실제로 느껴지는가 (카드를 보고 싶은가, "누구를 찾아야 하지?"가 생기는가 등)
+   - 막히는 곳, 지루한 구간, 하루 규칙이 답답하지 않은가
+   - 초상화가 있는 카드와 없는 카드의 차이
+3. 플레이 테스트 결과에 따라 밸런스(`rules.ts`, 조건) 조정 → 나머지 17명 초상화 → 장소 일러스트
+
+## 남은 TODO / 알려진 점
+
+- **"새로 발견됨" 표시(NEW, 탭 점)는 세션 동안만 유지.** 새로고침하면 사라진다. 발견 기록은 저장된다.
+- **아직 없는 것:** `events.json`(MVP.md 가 언급한 사건 10개 이하). 지금은 대화와 퀘스트가 그 역할을 한다.
+- **플레이 테스트 전 제외 항목:** 모바일 최적화, 배포, LLM 실시간 대화 (MVP 범위 밖)
+- **브라우저 자동화 참고:** Claude in Chrome 으로 테스트할 때 `ref` 클릭이나 좌표 클릭이 스크롤로 처리되는 경우가 있었다. JavaScript 로 직접 클릭하면 안정적이다.
+- **환경:** TypeScript 7, Vite 8, React 19. git 저장소가 아니다 (버전 관리를 시작하려면 `git init` 필요).

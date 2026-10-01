@@ -1,0 +1,731 @@
+[
+  {
+    "id": "person_001",
+    "name": "인주은",
+    "age": 38,
+    "occupation": "카페 바리스타",
+    "traits": ["유연함", "비판적 시선", "정리 미루기"],
+    "interests": ["베이커리 투어", "범죄 다큐멘터리"],
+    "skills": ["핸드드립", "메뉴 큐레이션", "손님 응대"],
+    "goal": "자기 색깔이 담긴 작은 디저트 카페를 여는 것",
+    "concern": "레시피 노트가 포스트잇 범벅이라 새 메뉴가 늘 '언젠가'로 밀린다.",
+    "locations": ["loc_cafe"],
+    "discoverableInfo": [
+      { "id": "person_001_info_1", "text": "손님 표정을 보고 원두를 골라 주는 바리스타. 주문이 몰려도 당황하지 않는다." },
+      { "id": "person_001_info_2", "text": "소금빵이라면 동네 빵집의 겉바속촉 순위를 전부 외우고 있다." },
+      { "id": "person_001_info_3", "text": "결혼 대신 마음 맞는 친구와 다세대주택에서 함께 산다. 서로의 거리를 존중하는 동거.", "unlock": [{ "type": "friendship", "personId": "person_001", "level": 1 }] },
+      { "id": "person_001_info_4", "text": "대학에서 언론학을 전공했다. 뉴스를 볼 때마다 한마디씩 날카롭게 덧붙인다.", "unlock": [{ "type": "friendship", "personId": "person_001", "level": 2 }] },
+      { "id": "person_001_info_5", "text": "레시피 노트는 포스트잇이 사방으로 삐져나와 본인도 못 알아본다.", "unlock": [{ "type": "quest_completed", "questId": "quest_001" }] },
+      { "id": "person_001_info_6", "text": "언젠가 이 카페를 인수해 '늦게 여는 디저트 카페'로 바꾸고 싶어 한다.", "unlock": [{ "type": "friendship", "personId": "person_001", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_001_talk_1", "text": "\"처음 보는 얼굴이네요. 오늘은 산미 있는 걸로 드릴게요. 표정이 그래 보여서요.\"" },
+      {
+        "id": "person_001_talk_2",
+        "text": "\"새 메뉴에 곁들일 디저트를 찾고 있어요. 창가 자리 단골 유아 씨 봤어요? 빵 굽는 친구인데, 재료 사러 시장에도 자주 가요. 유아 씨 구움과자면 딱일 텐데.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_001", "level": 1 }],
+        "effects": [
+          { "type": "discover_location", "locationId": "loc_market" },
+          { "type": "discover_person", "personId": "person_002" },
+          { "type": "discover_relationship", "relationshipId": "rel_001" }
+        ]
+      },
+      {
+        "id": "person_001_talk_3",
+        "text": "\"극장 병열 선생님이 우리 가게에서 작은 상영회를 해 보자고 하셨어요. 의자 몇 개면 되긴 하는데….\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_001", "level": 2 },
+          { "type": "person_discovered", "personId": "person_012" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_019" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "de6766080fc04d85a372e3c3003f16b8" }
+  },
+  {
+    "id": "person_002",
+    "name": "정유아",
+    "age": 26,
+    "occupation": "제빵사",
+    "traits": ["성실함", "소심함", "완벽주의"],
+    "interests": ["브이로그", "일본 드라마", "맛집 탐방"],
+    "skills": ["구움과자", "케이크 아이싱", "재료 관리"],
+    "goal": "지금 가게에서 메인 셰프로 인정받는 것",
+    "concern": "자기 디저트 숍을 열고 싶지만 실패가 무서워 계획을 세우지 못한다.",
+    "locations": ["loc_cafe", "loc_market"],
+    "discoverableInfo": [
+      { "id": "person_002_info_1", "text": "쌀가루를 섞은 쫀득한 구움과자가 특기인 제빵사." },
+      { "id": "person_002_info_2", "text": "레시피를 벗어나는 모험보다 익숙한 공정을 완벽하게 해내는 데서 안도감을 느낀다." },
+      { "id": "person_002_info_3", "text": "혼자 산다. 가끔 외롭지만 자기만의 공간이 주는 평온을 더 아낀다.", "unlock": [{ "type": "friendship", "personId": "person_002", "level": 1 }] },
+      { "id": "person_002_info_4", "text": "스트레스가 쌓이면 코인 노래방에서 아이유 노래를 부른다.", "unlock": [{ "type": "friendship", "personId": "person_002", "level": 2 }] },
+      { "id": "person_002_info_5", "text": "자기 가게를 열면 '실패해도 되는 메뉴' 칸을 따로 만들고 싶다고 조용히 말했다.", "unlock": [{ "type": "friendship", "personId": "person_002", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_002_talk_1", "text": "\"여기 처음 오셨어요? 저는 주은 언니네 단골이에요. …구움과자 하나 드셔 보실래요? 맛없으면 솔직하게 말해 주세요.\"" },
+      {
+        "id": "person_002_talk_2",
+        "text": "\"쌀가루는 떡집 주은 씨한테 받아요. 이름이 같아서 처음에 헷갈렸어요.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_002", "level": 1 },
+          { "type": "person_discovered", "personId": "person_005" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_002" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "c543f9546ebd49e5a97b576ab783c680" }
+  },
+  {
+    "id": "person_003",
+    "name": "이태현",
+    "age": 61,
+    "occupation": "전직 음료 조리사 (구직 중)",
+    "traits": ["정밀함", "체면 중시", "간섭이 많음"],
+    "interests": ["프로야구", "바다 낚시", "성당 모임"],
+    "skills": ["레시피 표준화", "매장 동선 설계", "원가 관리"],
+    "goal": "작은 매장의 운영 관리자로 복귀해 다시 소속감을 찾는 것",
+    "concern": "나이 때문에 면접에서 번번이 떨어진다. 가족 앞에서는 괜찮은 척한다.",
+    "locations": ["loc_cafe"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_001", "level": 2 }],
+    "discoverableInfo": [
+      { "id": "person_003_info_1", "text": "공학을 전공한 전직 음료 조리사. 0.1그램 단위로 배합을 맞춘다." },
+      { "id": "person_003_info_2", "text": "매일 같은 시간에 카페에 와서 구인 공고를 넘겨 본다." },
+      { "id": "person_003_info_3", "text": "이 카페 매니저 자리에 지원했다가 떨어진 적이 있다. 그래서 주은과 서먹하다.", "unlock": [{ "type": "friendship", "personId": "person_003", "level": 1 }] },
+      { "id": "person_003_info_4", "text": "집에서는 엄한 아버지이자 다정한 할아버지가 되려고 애쓰지만, 체계적인 잔소리가 가족을 숨 막히게 한다.", "unlock": [{ "type": "friendship", "personId": "person_003", "level": 2 }] },
+      { "id": "person_003_info_5", "text": "시장 잡화점에 커피 코너를 맡게 된 뒤로 표정이 한결 밝아졌다.", "unlock": [{ "type": "relationship_discovered", "relationshipId": "rel_004" }] },
+      { "id": "person_003_info_6", "text": "사실 커피보다 '사람들이 머무는 공간'을 설계하는 일이 좋았다고 털어놓았다.", "unlock": [{ "type": "friendship", "personId": "person_003", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_003_talk_1", "text": "\"여기 추출 시간이 매번 10초씩 달라요. 누가 좀 표준을 잡아 줘야 하는데.\"" },
+      {
+        "id": "person_003_talk_2",
+        "text": "\"…이 가게 매니저 자리에 지원했었소. 주은 씨는 내가 너무 깐깐하대.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_003", "level": 1 }],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_022" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "ab0cf441bd604ed49150c24818e0e208" }
+  },
+  {
+    "id": "person_004",
+    "name": "이용석",
+    "age": 65,
+    "occupation": "노점상",
+    "traits": ["눈치 빠름", "고집", "무뚝뚝한 다정함"],
+    "interests": ["민물낚시", "트로트"],
+    "skills": ["손님 심리 파악", "제철 상품 소싱", "시장 상권 분석"],
+    "goal": "당뇨를 잘 관리해 매일 아침 가판대를 펼 수 있는 몸을 유지하는 것",
+    "concern": "월세방 천장에서 비가 샌다. 아내 몰래 양동이를 받쳐 둔다.",
+    "locations": ["loc_market"],
+    "discoverableInfo": [
+      { "id": "person_004_info_1", "text": "시장 골목에서 수십 년 가판대를 지킨 베테랑. 손님 눈짓만 보고 살지 말지를 안다." },
+      { "id": "person_004_info_2", "text": "절기마다 뭐가 팔릴지 귀신같이 맞히지만, 옛날 방식을 고집하다 젊은 손님을 놓친다." },
+      { "id": "person_004_info_3", "text": "아내의 잔소리는 흘려들으면서도 아내가 좋아하는 시장 간식은 꼭 챙겨 간다.", "unlock": [{ "type": "friendship", "personId": "person_004", "level": 1 }] },
+      { "id": "person_004_info_4", "text": "당뇨 진단을 받았다. 시장 사람들에게는 비밀이다.", "unlock": [{ "type": "friendship", "personId": "person_004", "level": 2 }] },
+      { "id": "person_004_info_5", "text": "사는 월세방 천장에서 비가 샌다. 집주인은 고쳐 줄 생각이 없다.", "unlock": [{ "type": "friendship", "personId": "person_004", "level": 2 }] },
+      { "id": "person_004_info_6", "text": "해온극장 앞 노점 시절, 표 끊고 들어가는 연인들에게 군밤을 팔았다. 그때가 장사가 제일 잘됐다.", "unlock": [{ "type": "friendship", "personId": "person_004", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_004_talk_1", "text": "\"구경만 할 거면 옆으로 비켜서. …농담이야. 오늘 귤이 달아.\"" },
+      {
+        "id": "person_004_talk_2",
+        "text": "\"옆자리 떡집 아가씨? 혼자 애 키우면서 새벽 네 시에 찜기 올려. 독한 사람이야. 좋은 뜻으로.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_004", "level": 1 },
+          { "type": "person_discovered", "personId": "person_005" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_005" }]
+      },
+      {
+        "id": "person_004_talk_3",
+        "text": "\"어젯밤에 또 천장에서 물이 떨어졌어. 양동이를 두 개 받쳤지. 집주인은 전화도 안 받고… 마누라한테는 말하지 마.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_004", "level": 2 }],
+        "effects": [{ "type": "unlock_quest", "questId": "quest_005" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "5dd0bb23a1ad4b288598aeabb7f427c9" }
+  },
+  {
+    "id": "person_005",
+    "name": "조주은",
+    "age": 33,
+    "occupation": "떡집 직원",
+    "traits": ["강인함", "신중함", "숨은 모험심"],
+    "interests": ["예능 시청", "골목 산책", "이국 음식"],
+    "skills": ["찜 온도 조절", "퓨전 떡 개발", "대량 주문 관리"],
+    "goal": "자기 이름이 걸린 작은 떡집의 장인이 되는 것",
+    "concern": "혼자 아이를 키우며 새벽 일을 한다. 창업 자금은 요원하다.",
+    "locations": ["loc_market"],
+    "discoverableInfo": [
+      { "id": "person_005_info_1", "text": "찜기 온도 변화를 손끝으로 읽는 떡 장인 지망생. 말차·크림치즈 떡이 특기다." },
+      { "id": "person_005_info_2", "text": "평소에는 조용하고 신중하다. 말수는 적지만 대답은 정확하다." },
+      { "id": "person_005_info_3", "text": "사별 후 혼자 아이를 키운다. 아이에게는 엄한 보호자이자 다정한 친구다.", "unlock": [{ "type": "friendship", "personId": "person_005", "level": 1 }] },
+      { "id": "person_005_info_4", "text": "지칠 때는 목적지 없이 골목을 걷는다. 가끔은 낯선 도시로 훌쩍 떠나 똠얌꿍을 먹는다.", "unlock": [{ "type": "friendship", "personId": "person_005", "level": 2 }] },
+      { "id": "person_005_info_5", "text": "자기 떡집 이름을 벌써 정해 두었다. 아이 이름에서 한 글자를 땄다.", "unlock": [{ "type": "friendship", "personId": "person_005", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_005_talk_1", "text": "\"갓 쪄서 뜨거워요. 말차 크림치즈떡인데… 커피랑도 어울려요, 의외로.\"" },
+      {
+        "id": "person_005_talk_2",
+        "text": "\"주민센터 복지사님이 한부모 지원 서류를 대신 챙겨 주셨어요. 그분 아니었으면 몰랐을 거예요.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_005", "level": 2 },
+          { "type": "person_discovered", "personId": "person_011" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_024" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "7d963be6d333484292cbefea0f52df65" }
+  },
+  {
+    "id": "person_006",
+    "name": "김춘호",
+    "age": 48,
+    "occupation": "잡화점 주인",
+    "traits": ["무뚝뚝함", "의리", "아날로그"],
+    "interests": ["역사 유적지", "산책", "골프"],
+    "skills": ["단골 파악", "수기 장부", "상인회 조율"],
+    "goal": "가게 한쪽에 동네 사랑방 같은 커피 코너를 만드는 것",
+    "concern": "혈당 관리를 해야 하는데 삼겹살에 소주를 끊지 못한다.",
+    "locations": ["loc_market"],
+    "discoverableInfo": [
+      { "id": "person_006_info_1", "text": "앱 대신 손때 묻은 장부로 매출을 적는 잡화점 주인." },
+      { "id": "person_006_info_2", "text": "손님이 문을 여는 순간의 표정만 보고 필요한 물건을 짚어 낸다." },
+      { "id": "person_006_info_3", "text": "시장 상인회 총무. 상인들 사이의 크고 작은 다툼을 중재한다.", "unlock": [{ "type": "friendship", "personId": "person_006", "level": 1 }] },
+      { "id": "person_006_info_4", "text": "자녀들이 독립할 때까지 지금 매출만 지키면 된다고 말하지만, 사실은 가게를 동네 사랑방으로 만들고 싶다.", "unlock": [{ "type": "friendship", "personId": "person_006", "level": 2 }] },
+      { "id": "person_006_info_5", "text": "상인회 단톡방에 공지 하나만 올리면 시장 사람 서른 명이 모인다.", "unlock": [{ "type": "friendship", "personId": "person_006", "level": 2 }] },
+      { "id": "person_006_info_6", "text": "주말마다 아내와 옛 유적지를 걷는다. 무뚝뚝한 사람이 그때만 말이 많아진다.", "unlock": [{ "type": "friendship", "personId": "person_006", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_006_talk_1", "text": "\"건전지? 테이프? 없는 거 빼고 다 있어.\"" },
+      {
+        "id": "person_006_talk_2",
+        "text": "\"가게 구석에 의자 두 개랑 커피 기계 하나 놓고 싶은데, 커피를 알아야 말이지. 누구 커피 제대로 아는 사람 없나?\"",
+        "conditions": [{ "type": "friendship", "personId": "person_006", "level": 1 }],
+        "effects": [{ "type": "unlock_quest", "questId": "quest_003" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "83c6d8e9d91d426b834d8ecf97cd2979" }
+  },
+  {
+    "id": "person_007",
+    "name": "이이랑",
+    "age": 28,
+    "occupation": "사서",
+    "traits": ["원칙주의", "꼼꼼함", "논리적"],
+    "interests": ["보드게임", "산책하며 팟캐스트"],
+    "skills": ["자료 검색", "주제별 큐레이션", "행정 처리"],
+    "goal": "이용자들이 겪는 사소한 불편을 하나씩 없애는 것",
+    "concern": "향토자료실의 옛 신문 더미를 정리하고 싶지만 예산도 사람도 없다.",
+    "locations": ["loc_library"],
+    "discoverableInfo": [
+      { "id": "person_007_info_1", "text": "\"표지가 파란색이었던 것 같아요\"라는 말만으로 책을 찾아 주는 사서." },
+      { "id": "person_007_info_2", "text": "분류표의 쉼표 하나까지 챙기는 원칙주의자." },
+      { "id": "person_007_info_3", "text": "부모님과 살지만 자기 방만큼은 철저한 개인 공간이다.", "unlock": [{ "type": "friendship", "personId": "person_007", "level": 1 }] },
+      { "id": "person_007_info_4", "text": "향토자료실에 해온극장 개관 기념 신문이 있을 거라고 믿는다. 아직 못 찾았을 뿐.", "unlock": [{ "type": "friendship", "personId": "person_007", "level": 2 }] },
+      { "id": "person_007_info_5", "text": "주말엔 보드게임 카페에서 전략 게임을 한다. 지는 걸 꽤 싫어한다.", "unlock": [{ "type": "friendship", "personId": "person_007", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_007_talk_1", "text": "\"찾는 자료 있으세요? 없으면… 찾고 싶어질 만한 걸 추천해 드릴 수도 있어요.\"" },
+      {
+        "id": "person_007_talk_2",
+        "text": "\"매주 목요일 글쓰기 모임에 이동정 선생님이 오세요. 이 동네 옛날 얘기는 그분이 제일 많이 아세요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_007", "level": 1 }],
+        "effects": [
+          { "type": "discover_person", "personId": "person_008" },
+          { "type": "discover_relationship", "relationshipId": "rel_007" }
+        ]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "95df941b37f44b568eaefa7af7627a94" }
+  },
+  {
+    "id": "person_008",
+    "name": "이동정",
+    "age": 76,
+    "occupation": "수필가",
+    "traits": ["섬세함", "책임감", "새벽형"],
+    "interests": ["습지 산책", "배드민턴", "짜장면"],
+    "skills": ["수필 집필", "문장 교정", "구술 생애사 기록"],
+    "goal": "사라져 가는 골목과 옛 가게들을 담은 기록집을 펴내는 것",
+    "concern": "원고는 쌓여 가는데 책으로 묶어 줄 사람이 없다.",
+    "locations": ["loc_library"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_007", "level": 1 }],
+    "discoverableInfo": [
+      { "id": "person_008_info_1", "text": "매일 새벽 5시, 돋보기를 쓰고 그날의 공기를 수필로 옮기는 작가." },
+      { "id": "person_008_info_2", "text": "이웃들의 소소한 인생사를 받아 적어 지역 문예지에 싣는다." },
+      { "id": "person_008_info_3", "text": "남편을 먼저 보내고 손주들과 산다. 가끔 창밖을 오래 본다.", "unlock": [{ "type": "friendship", "personId": "person_008", "level": 1 }] },
+      { "id": "person_008_info_4", "text": "혈당 때문에 채소부터 먹지만, 일주일에 한 번 짜장면만큼은 양보하지 않는다.", "unlock": [{ "type": "friendship", "personId": "person_008", "level": 1 }] },
+      { "id": "person_008_info_5", "text": "1968년 해온극장 개관일에 첫 상영을 봤다. 그날 표 값과 상영작, 줄 선 사람들의 옷차림까지 기억한다.", "unlock": [{ "type": "friendship", "personId": "person_008", "level": 2 }] },
+      { "id": "person_008_info_6", "text": "기록집의 마지막 장 제목은 이미 정했다. '아직 문 닫지 않은 가게들'.", "unlock": [{ "type": "friendship", "personId": "person_008", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_008_talk_1", "text": "\"젊은 사람이 옛날 얘기를 궁금해하다니. 앉아요, 길어질 거니까.\"" },
+      {
+        "id": "person_008_talk_2",
+        "text": "\"원고를 책으로 묶어 주겠다는 편집자 양반이 있긴 한데… 김광섭 씨라고, 여기 자료실에 자주 와요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_008", "level": 1 }],
+        "effects": [
+          { "type": "discover_person", "personId": "person_009" },
+          { "type": "discover_relationship", "relationshipId": "rel_006" },
+          { "type": "unlock_quest", "questId": "quest_004" }
+        ]
+      },
+      {
+        "id": "person_008_talk_3",
+        "text": "\"광장 수선집 경자 언니? 우리 둘이 극장 앞에서 사진도 찍었지. 언니는 그때도 바느질 가방을 들고 다녔어.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_008", "level": 2 },
+          { "type": "person_discovered", "personId": "person_015" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_020" }]
+      }
+    ],
+    "rarity": "rare",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "871ebeeaf74d4b9eab6050ecb5508193" }
+  },
+  {
+    "id": "person_009",
+    "name": "김광섭",
+    "age": 60,
+    "occupation": "출판 편집자",
+    "traits": ["눈썰미", "사교적", "잔소리"],
+    "interests": ["숲길 걷기", "배드민턴"],
+    "skills": ["교정교열", "지면 레이아웃", "인쇄 관리"],
+    "goal": "은퇴 전에 동네 기록물을 작은 독립 출판물로 묶어 내는 것",
+    "concern": "전셋값이 부담이다. 자녀들이 자립하면 이사를 가야 할지도 모른다.",
+    "locations": ["loc_library"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_008", "level": 1 }],
+    "discoverableInfo": [
+      { "id": "person_009_info_1", "text": "오탈자 하나 놓치지 않는 베테랑 편집자. 종이 질감과 잉크 냄새를 신뢰한다." },
+      { "id": "person_009_info_2", "text": "인쇄소 반장님들과 농담을 주고받으며 불가능한 마감도 맞춰 낸다." },
+      { "id": "person_009_info_3", "text": "가족의 기분을 세심하게 살피지만 표현은 늘 잔소리로 나온다.", "unlock": [{ "type": "friendship", "personId": "person_009", "level": 1 }] },
+      { "id": "person_009_info_4", "text": "지금 사는 집의 전셋값이 올라 은퇴 후 거처를 고민한다.", "unlock": [{ "type": "friendship", "personId": "person_009", "level": 2 }] },
+      { "id": "person_009_info_5", "text": "젊은 시절 사진집을 만들어 본 적이 있다. 사진가들과의 인연이 아직 남아 있다.", "unlock": [{ "type": "friendship", "personId": "person_009", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_009_talk_1", "text": "\"방금 그 안내문, '됬다'가 아니라 '됐다'예요. 직업병이라 미안합니다.\"" },
+      {
+        "id": "person_009_talk_2",
+        "text": "\"홍혜선 선생 사진집? 한번 봤으면 좋겠네. 그런 필름은 책으로 남아야 해요.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_009", "level": 2 },
+          { "type": "person_discovered", "personId": "person_014" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_021" }]
+      }
+    ],
+    "rarity": "uncommon",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "d14699ed853c4ad9920aa8602e3d928f" }
+  },
+  {
+    "id": "person_010",
+    "name": "신홍준",
+    "age": 21,
+    "occupation": "주민센터 주무관",
+    "traits": ["효율 중시", "영리함", "은근한 다정함"],
+    "interests": ["수영", "풍경 사진", "러닝"],
+    "skills": ["공문서 작성", "민원 응대", "엑셀 자동화"],
+    "goal": "'일 잘하는 막내'로 인정받고 정시에 퇴근하는 것",
+    "concern": "독립하고 싶지만 어머니의 보살핌을 뿌리치지 못한다.",
+    "locations": ["loc_community_center"],
+    "discoverableInfo": [
+      { "id": "person_010_info_1", "text": "단축키와 자체 서식으로 공문서를 남들보다 두 배 빨리 처리하는 막내 공무원." },
+      { "id": "person_010_info_2", "text": "까다로운 민원인도 유연하게 받아넘긴다. 격식을 가끔 놓쳐 선배들에게 혼난다." },
+      { "id": "person_010_info_3", "text": "퇴근 후 어머니와 시장에서 제철 나물을 고른다. 무뚝뚝한 척하는 다정한 아들.", "unlock": [{ "type": "friendship", "personId": "person_010", "level": 1 }] },
+      { "id": "person_010_info_4", "text": "극장 같은 오래된 건물은 '지역 문화공간'으로 지정되면 보수비 지원을 받을 수 있다는 걸 안다.", "unlock": [{ "type": "friendship", "personId": "person_010", "level": 2 }] },
+      { "id": "person_010_info_5", "text": "주말마다 찍는 풍경 사진은 아무에게도 보여 준 적이 없다.", "unlock": [{ "type": "friendship", "personId": "person_010", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_010_talk_1", "text": "\"번호표 뽑으셨어요? 아, 그냥 구경이요? …잠깐이면 괜찮아요.\"" },
+      {
+        "id": "person_010_talk_2",
+        "text": "\"지역신문 김 기자님이요? 보도자료 받으러 자주 오세요. 오시면 꼭 제 서식 칭찬해 주세요.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_010", "level": 1 },
+          { "type": "person_discovered", "personId": "person_016" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_010" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "42794d83af4b4703b57d718306846364" }
+  },
+  {
+    "id": "person_011",
+    "name": "박순옥",
+    "age": 65,
+    "occupation": "생활지원사",
+    "traits": ["배려심", "중재자", "속앓이"],
+    "interests": ["산책로 걷기", "한정식 맛집"],
+    "skills": ["말벗 상담", "안부 방문", "복지 서류 작성"],
+    "goal": "매일 아침 반겨 주는 사람들이 있는 일상을 지키는 것",
+    "concern": "남의 외로움은 잘 달래면서 자기 외로움은 누구에게도 말하지 못한다.",
+    "locations": ["loc_community_center"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_015", "level": 1 }],
+    "discoverableInfo": [
+      { "id": "person_011_info_1", "text": "홀몸 어르신 댁을 돌며 안부를 확인하는 생활지원사." },
+      { "id": "person_011_info_2", "text": "동네 모임에서 다툼이 생기면 늘 그녀가 중재자다." },
+      { "id": "person_011_info_3", "text": "남편을 떠나보낸 뒤 혼자 산다. 주말마다 자녀들이 오기를 기다리며 반찬을 만든다.", "unlock": [{ "type": "friendship", "personId": "person_011", "level": 1 }] },
+      { "id": "person_011_info_4", "text": "아파도 '괜찮다'고 말하는 버릇이 있다. 자녀들에게 짐이 되기 싫어서.", "unlock": [{ "type": "friendship", "personId": "person_011", "level": 2 }] },
+      { "id": "person_011_info_5", "text": "밤에 잠이 안 오면 복지관 이웃들에게 차례로 전화를 건다. 사실 자기가 외로워서다.", "unlock": [{ "type": "friendship", "personId": "person_011", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_011_talk_1", "text": "\"경자 언니가 보냈어요? 밥은 먹었어요? 안 먹었으면 여기 떡 있어요.\"" },
+      {
+        "id": "person_011_talk_2",
+        "text": "\"도서관에 자주 가는 이승찬 씨, 혼자 지내는데 요즘 말수가 너무 줄었어요. 뭐라도 할 일이 있으면 좋을 텐데.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_011", "level": 2 },
+          { "type": "location_discovered", "locationId": "loc_library" }
+        ],
+        "effects": [
+          { "type": "discover_person", "personId": "person_019" },
+          { "type": "discover_relationship", "relationshipId": "rel_013" },
+          { "type": "unlock_quest", "questId": "quest_007" }
+        ]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "36b6402055e149229b20468a86f461ba" }
+  },
+  {
+    "id": "person_012",
+    "name": "이병열",
+    "age": 60,
+    "occupation": "방송 연출 보조",
+    "traits": ["낭만적", "중재자", "능청스러움"],
+    "interests": ["유적지 답사", "라디오", "산책"],
+    "skills": ["현장 위기관리", "계약서 검토", "장소 섭외"],
+    "goal": "동네 골목을 담은 짧은 다큐를 찍어 작은 공간에서 상영하는 것",
+    "concern": "해온극장이 문을 닫으면 상영할 곳이 없다.",
+    "locations": ["loc_theater"],
+    "discoverableInfo": [
+      { "id": "person_012_info_1", "text": "예민한 감독과 겁먹은 막내 사이의 긴장을 풀어 주는 촬영 현장 베테랑." },
+      { "id": "person_012_info_2", "text": "법학을 전공해서 계약서의 독소 조항을 귀신같이 찾아낸다." },
+      { "id": "person_012_info_3", "text": "무심한 척하지만 아내가 좋아하는 간식을 슬쩍 사 온다.", "unlock": [{ "type": "friendship", "personId": "person_012", "level": 1 }] },
+      { "id": "person_012_info_4", "text": "골목 다큐의 첫 상영은 해온극장에서 하고 싶었다. 폐관 공고를 보고 한참 서 있었다.", "unlock": [{ "type": "friendship", "personId": "person_012", "level": 2 }] },
+      { "id": "person_012_info_5", "text": "후배들에게 기술보다 '사람 마음 얻는 법'을 가르치는 걸 더 좋아한다.", "unlock": [{ "type": "friendship", "personId": "person_012", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_012_talk_1", "text": "\"폐관 공고 보러 왔어요? 나도요. 매일 와서 보는데 글자가 안 바뀌네.\"" },
+      {
+        "id": "person_012_talk_2",
+        "text": "\"극장 옛 자료요? 구립도서관 향토자료실에 가 봐요. 사서 아가씨가 깐깐한데 실력은 확실해.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_012", "level": 1 }],
+        "effects": [
+          { "type": "discover_location", "locationId": "loc_library" },
+          { "type": "discover_person", "personId": "person_007" }
+        ]
+      },
+      {
+        "id": "person_012_talk_3",
+        "text": "\"이 극장 간판 사진을 제일 많이 가진 사람? 홍혜선 선생이지. 옛날 촬영장에서 신세를 많이 졌어요. 요즘도 극장 앞에 카메라 들고 와요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_012", "level": 2 }],
+        "effects": [
+          { "type": "discover_person", "personId": "person_014" },
+          { "type": "discover_relationship", "relationshipId": "rel_014" }
+        ]
+      }
+    ],
+    "rarity": "uncommon",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "5d23900e4d2a48228223d3fadcc0d73d" }
+  },
+  {
+    "id": "person_013",
+    "name": "이고은",
+    "age": 23,
+    "occupation": "무대 디자이너 (구직 중)",
+    "traits": ["감각적", "덜렁거림", "조급함"],
+    "interests": ["카페 인테리어 구경", "솥밥 맛집", "줄넘기"],
+    "skills": ["공간 모델링", "소품 제작", "무대 연출"],
+    "goal": "자기 색깔이 드러나는 작은 공간을 연출하는 전문가가 되는 것",
+    "concern": "구직 기간이 길어지면서 부모님의 걱정 섞인 말이 점점 아프게 들린다.",
+    "locations": ["loc_theater"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_012", "level": 1 }],
+    "discoverableInfo": [
+      { "id": "person_013_info_1", "text": "스케치업으로 정교한 공간을 설계하는 전직 무대 디자이너." },
+      { "id": "person_013_info_2", "text": "작업 파일 이름이 전부 '최종_진짜최종'이다." },
+      { "id": "person_013_info_3", "text": "부모님과 산다. 잔소리에 예민하게 굴다가도 결국 그 지지에 기댄다.", "unlock": [{ "type": "friendship", "personId": "person_013", "level": 1 }] },
+      { "id": "person_013_info_4", "text": "해온극장 무대 뒤 창고에 옛날 세트가 그대로 있다는 소문을 확인하고 싶어 한다.", "unlock": [{ "type": "friendship", "personId": "person_013", "level": 2 }] },
+      { "id": "person_013_info_5", "text": "극장이 살아남으면 첫 무대 연출을 맡고 싶다고 쑥스럽게 말했다.", "unlock": [{ "type": "quest_completed", "questId": "quest_002" }] }
+    ],
+    "talks": [
+      { "id": "person_013_talk_1", "text": "\"이 극장 천장 몰딩 보셨어요? 요즘 이렇게 안 만들어요. 아, 저 여기 직원은 아니에요.\"" },
+      {
+        "id": "person_013_talk_2",
+        "text": "\"병열 선생님이 현장에서 저 많이 챙겨 주셨어요. 일 끊기고 나서도 연락 주는 사람은 선생님뿐이에요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_013", "level": 1 }],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_015" }]
+      }
+    ],
+    "rarity": "uncommon",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "cb8e1c05cf59404197526e4ad7529791" }
+  },
+  {
+    "id": "person_014",
+    "name": "홍혜선",
+    "age": 82,
+    "occupation": "사진가",
+    "traits": ["강인함", "섬세함", "수다스러움"],
+    "interests": ["새벽 출사", "식물 가꾸기", "페퍼로니 피자"],
+    "skills": ["필름 카메라", "디지털 보정", "인물 포착"],
+    "goal": "사라져 가는 골목과 그곳 사람들의 사진집을 남기는 것",
+    "concern": "밤이면 밀려오는 고독. 사진집을 끝내기 전에 눈이 나빠질까 두렵다.",
+    "locations": ["loc_theater"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_012", "level": 2 }],
+    "discoverableInfo": [
+      { "id": "person_014_info_1", "text": "필름 시절부터 빛과 그림자를 다뤄 온 82세 현역 사진가. 요즘은 태블릿으로 보정도 한다." },
+      { "id": "person_014_info_2", "text": "옛 친구들과의 단체 채팅방에서 누구보다 말이 많다." },
+      { "id": "person_014_info_3", "text": "혼자 산다. 가끔 자녀들을 불러 밥을 해 먹이지만, 위로는 친구들과의 수다에서 얻는다.", "unlock": [{ "type": "friendship", "personId": "person_014", "level": 1 }] },
+      { "id": "person_014_info_4", "text": "새벽 물안개를 찍으러 나갔다가 돌아와서 페퍼로니 피자를 시켜 먹는 게 루틴이다.", "unlock": [{ "type": "friendship", "personId": "person_014", "level": 1 }] },
+      { "id": "person_014_info_5", "text": "1970년대 해온극장의 손 그림 간판을 찍은 필름 수십 롤을 아직 갖고 있다. 간판 뒤 원래 건물 외벽도 찍혀 있다.", "unlock": [{ "type": "friendship", "personId": "person_014", "level": 2 }] },
+      { "id": "person_014_info_6", "text": "사진집 제목은 '문 닫기 전에'. 해온극장 사진을 마지막 장에 넣을 생각이다.", "unlock": [{ "type": "friendship", "personId": "person_014", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_014_talk_1", "text": "\"움직이지 마요. 지금 빛이 딱 좋아. …됐다. 이거 나중에 줄게요.\"" },
+      {
+        "id": "person_014_talk_2",
+        "text": "\"골목 찍는 이영만이라는 양반이 있어요. 나랑 같은 골목을 찍는데, 자꾸 나보다 먼저 와 있어. 얄미워.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_014", "level": 2 },
+          { "type": "person_discovered", "personId": "person_018" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_016" }]
+      }
+    ],
+    "rarity": "rare",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "03e6ac6a54a44154bb78e1a1ca285d2b" }
+  },
+  {
+    "id": "person_015",
+    "name": "권경자",
+    "age": 84,
+    "occupation": "수선집 주인",
+    "traits": ["따뜻함", "절약", "덜렁거림"],
+    "interests": ["화분 가꾸기", "교회 모임", "트로트"],
+    "skills": ["맞춤 바느질", "옷 형태 복원", "동네 소식"],
+    "goal": "눈이 허락하는 한 단골들의 옷을 손봐 주는 것",
+    "concern": "수선집이 있는 낡은 상가 건물이 재건축 이야기에 오르내린다.",
+    "locations": ["loc_plaza"],
+    "discoverableInfo": [
+      { "id": "person_015_info_1", "text": "광장 상가 한편에서 수십 년째 재봉틀을 돌려 온 수선집 주인." },
+      { "id": "person_015_info_2", "text": "옷감만 만져 봐도 옷이 얼마나 더 버틸지 안다. 실밥 정리는 가끔 잊는다." },
+      { "id": "person_015_info_3", "text": "남편을 먼저 보내고 친척들과 산다. 자식에게 짐이 되지 않으려고 아직 돈을 번다.", "unlock": [{ "type": "friendship", "personId": "person_015", "level": 1 }] },
+      { "id": "person_015_info_4", "text": "동네에서 누가 아프고 누가 이사 가는지 제일 먼저 안다. 수선집은 동네 소식의 정거장이다.", "unlock": [{ "type": "friendship", "personId": "person_015", "level": 2 }] },
+      { "id": "person_015_info_5", "text": "해온극장 영사기사였던 남편의 작업복을 아직 옷걸이에 걸어 두었다.", "unlock": [{ "type": "friendship", "personId": "person_015", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_015_talk_1", "text": "\"단추 떨어졌네. 이리 줘 봐, 금방 달아 줄게. 돈은 무슨.\"" },
+      {
+        "id": "person_015_talk_2",
+        "text": "\"주민센터 순옥이가 일주일에 한 번 나 보러 와. 남 챙기느라 자기 밥은 거르는 애야. 가 보면 반가워할 거야.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_015", "level": 1 }],
+        "effects": [
+          { "type": "discover_location", "locationId": "loc_community_center" },
+          { "type": "discover_person", "personId": "person_011" },
+          { "type": "discover_relationship", "relationshipId": "rel_012" }
+        ]
+      },
+      {
+        "id": "person_015_talk_3",
+        "text": "\"건물 보러 오는 감리사 양반이 있어. 바지 기장 줄이러 왔다가 이 건물 기둥이 좋다고 한참 쳐다보더라고.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_015", "level": 2 }],
+        "effects": [
+          { "type": "discover_person", "personId": "person_017" },
+          { "type": "discover_relationship", "relationshipId": "rel_017" }
+        ]
+      },
+      {
+        "id": "person_015_talk_4",
+        "text": "\"순옥이가 요즘 밤마다 전화를 해. 내 안부를 묻는다지만… 그 애가 외로운 거야. 남 챙기느라 자기 얘기는 한 번도 안 해.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_015", "level": 2 },
+          { "type": "friendship", "personId": "person_011", "level": 2 }
+        ],
+        "effects": [{ "type": "unlock_quest", "questId": "quest_008" }]
+      }
+    ],
+    "rarity": "rare",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "3874df82030a4401aafdbad9008bf01b" }
+  },
+  {
+    "id": "person_016",
+    "name": "김창영",
+    "age": 31,
+    "occupation": "지역신문 기자",
+    "traits": ["분석적", "팩트 집착", "조용한 배려"],
+    "interests": ["웹툰", "전략 게임", "유적지 답사"],
+    "skills": ["인터뷰", "쉬운 글쓰기", "팩트 체크"],
+    "goal": "사회의 사각지대를 발굴해 대안을 내놓는 칼럼니스트가 되는 것",
+    "concern": "지역신문 구독자는 줄고, 쓰고 싶은 기사는 '조회수가 안 나온다'며 밀린다.",
+    "locations": ["loc_plaza"],
+    "discoverableInfo": [
+      { "id": "person_016_info_1", "text": "흩어진 정보 조각을 모아 핵심을 꿰는 지역신문 기자." },
+      { "id": "person_016_info_2", "text": "팩트 체크에 집착한다. 출처 없는 이야기는 기사로 쓰지 않는다." },
+      { "id": "person_016_info_3", "text": "부모님과 산다. 무심한 척하며 생필품을 미리 주문해 둔다.", "unlock": [{ "type": "friendship", "personId": "person_016", "level": 1 }] },
+      { "id": "person_016_info_4", "text": "극장 폐관 기사를 쓰려면 '이 극장이 왜 중요한지' 보여 줄 옛 증언이 필요하다.", "unlock": [{ "type": "friendship", "personId": "person_016", "level": 2 }] },
+      { "id": "person_016_info_5", "text": "퇴근 후 논문을 찾아 읽는다. 언젠가 칼럼 연재를 따내겠다는 목표가 있다.", "unlock": [{ "type": "friendship", "personId": "person_016", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_016_talk_1", "text": "\"이 동네 분이세요? 혹시 요즘 동네에서 이상하다 싶은 일 없었어요? 취재 중이라서요.\"" },
+      {
+        "id": "person_016_talk_2",
+        "text": "\"해온극장이 다음 달에 문을 닫는대요. 다들 아쉽다고만 하고 아무도 이유를 안 물어요. 한번 가 보실래요?\"",
+        "conditions": [{ "type": "friendship", "personId": "person_016", "level": 1 }],
+        "effects": [
+          { "type": "discover_location", "locationId": "loc_theater" },
+          { "type": "unlock_quest", "questId": "quest_002" }
+        ]
+      },
+      {
+        "id": "person_016_talk_3",
+        "text": "\"제게 기사 쓰는 법을 가르쳐 준 선배가 이 동네 살아요. 이영만 선배. 요즘은 골목 사진만 찍으시지만요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_016", "level": 2 }],
+        "effects": [
+          { "type": "discover_person", "personId": "person_018" },
+          { "type": "discover_relationship", "relationshipId": "rel_009" }
+        ]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "75b63913777c4322936a03031354485f" }
+  },
+  {
+    "id": "person_017",
+    "name": "오지훈",
+    "age": 42,
+    "occupation": "건축감리사",
+    "traits": ["깐깐함", "경청", "유연함"],
+    "interests": ["반려견 산책", "건축 다큐멘터리"],
+    "skills": ["도면 검토", "건축법규 해석", "안전 진단"],
+    "goal": "친환경 공법을 현장에 정착시키고 후배들의 멘토가 되는 것",
+    "concern": "오래된 건물의 가치를 알아도 '철거가 싸다'는 계산 앞에서는 말이 막힌다.",
+    "locations": ["loc_plaza"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_015", "level": 2 }],
+    "discoverableInfo": [
+      { "id": "person_017_info_1", "text": "도면의 1mm 오차도 잡아내는 감리사. 현장 막내의 엉뚱한 제안도 끝까지 듣는다." },
+      { "id": "person_017_info_2", "text": "반려견과 산책하며 동네 건물의 기둥과 처마를 관찰한다." },
+      { "id": "person_017_info_3", "text": "아내와 단출하게 산다. 무거운 짐 옮기기만큼은 자기가 도맡는다.", "unlock": [{ "type": "friendship", "personId": "person_017", "level": 1 }] },
+      { "id": "person_017_info_4", "text": "해온극장의 철근콘크리트 아치 구조는 당시로서는 드문 공법이라고 본다. 외벽 원형 사진만 있으면 가치를 증명할 수 있다.", "unlock": [{ "type": "friendship", "personId": "person_017", "level": 2 }] },
+      { "id": "person_017_info_5", "text": "해외 건축 다큐를 보다가 새벽 세 시가 되는 날이 많다.", "unlock": [{ "type": "friendship", "personId": "person_017", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_017_talk_1", "text": "\"이 상가 기둥 보세요. 요즘은 이렇게 안 지어요. 비싸서요.\"" },
+      {
+        "id": "person_017_talk_2",
+        "text": "\"시장 노점 어르신 집 천장이 샌다고요? 구조를 봐야 알겠지만… 한번 가 보죠.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_017", "level": 2 },
+          { "type": "person_discovered", "personId": "person_004" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_025" }]
+      }
+    ],
+    "rarity": "uncommon",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "c1255eccd9104427a1173fb075532c34" }
+  },
+  {
+    "id": "person_018",
+    "name": "이영만",
+    "age": 56,
+    "occupation": "골목 기록가",
+    "traits": ["독립적", "관찰력", "거리 두기"],
+    "interests": ["등산", "올드 팝", "노포 탐방"],
+    "skills": ["시사 분석", "논리적 글쓰기", "주택 수리"],
+    "goal": "사라져 가는 노포들을 사진 일기로 남기는 것",
+    "concern": "혼자가 편하다고 말하지만, 기록을 보여 줄 사람이 없다는 게 조금 쓸쓸하다.",
+    "locations": ["loc_plaza"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_016", "level": 2 }],
+    "discoverableInfo": [
+      { "id": "person_018_info_1", "text": "조직을 떠나 낡은 골목과 노포를 찍어 블로그에 올리는 기록가." },
+      { "id": "person_018_info_2", "text": "복잡한 사회 현상을 세 문장으로 정리하는 재주가 있다." },
+      { "id": "person_018_info_3", "text": "혼자 단독주택에 산다. 수도꼭지도 마당 잡초도 직접 손본다.", "unlock": [{ "type": "friendship", "personId": "person_018", "level": 1 }] },
+      { "id": "person_018_info_4", "text": "블로그에 해온극장 매표소 할머니 인터뷰를 올린 적이 있다. 조회수 12.", "unlock": [{ "type": "friendship", "personId": "person_018", "level": 2 }] },
+      { "id": "person_018_info_5", "text": "창영에게 기사 쓰는 법을 가르친 걸 조금 자랑스러워한다. 본인 앞에서는 절대 말하지 않는다.", "unlock": [{ "type": "relationship_discovered", "relationshipId": "rel_009" }] },
+      { "id": "person_018_info_6", "text": "블로그를 책으로 묶자는 제안을 받으면 거절하지 않을 것 같다.", "unlock": [{ "type": "friendship", "personId": "person_018", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_018_talk_1", "text": "\"창영이가 보냈구먼. 걔는 아직도 문장이 길어. …커피나 한잔할래요?\"" }
+    ],
+    "rarity": "uncommon",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "48fc0dd5a59540c089023e8c2f7eeb35" }
+  },
+  {
+    "id": "person_019",
+    "name": "이승찬",
+    "age": 49,
+    "occupation": "미술사 전공 구직자",
+    "traits": ["사색적", "예민함", "조심스러움"],
+    "interests": ["미술관 도록 수집", "천변 산책"],
+    "skills": ["작품 해설", "인문학적 글쓰기", "전시 기획 기초"],
+    "goal": "도서관이나 문화센터에서 작은 역할을 맡아 생활 리듬을 되찾는 것",
+    "concern": "이혼 후 혼자가 된 뒤로 사람 만나는 일이 점점 어려워진다.",
+    "locations": ["loc_library"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_007", "level": 2 }],
+    "discoverableInfo": [
+      { "id": "person_019_info_1", "text": "도서관 미술 코너 창가 자리에 매일 앉아 있는 사람." },
+      { "id": "person_019_info_2", "text": "서양 미술사를 전공했다. 그림 한 장으로 30분을 이야기할 수 있다." },
+      { "id": "person_019_info_3", "text": "이혼 후 혼자 산다. 가족에게 긴 전화를 걸어 적막을 달랜다.", "unlock": [{ "type": "friendship", "personId": "person_019", "level": 1 }] },
+      { "id": "person_019_info_4", "text": "추진력이 없다고 스스로를 탓하지만, 누가 부탁하면 끝까지 해내는 사람이다.", "unlock": [{ "type": "friendship", "personId": "person_019", "level": 2 }] },
+      { "id": "person_019_info_5", "text": "극장 손 그림 간판을 '이 도시의 민중 미술'이라고 부른다.", "unlock": [{ "type": "friendship", "personId": "person_019", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_019_talk_1", "text": "\"…아, 네. 이 도록이요? 1970년대 간판화 모음이에요. 관심 있으시면… 아닙니다.\"" },
+      {
+        "id": "person_019_talk_2",
+        "text": "\"사서 선생님이 가끔 자료 정리를 부탁하세요. 저 같은 사람한테도요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_019", "level": 1 }],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_008" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "0b11415209504872986b510319ddd67d" }
+  },
+  {
+    "id": "person_020",
+    "name": "김하연",
+    "age": 19,
+    "occupation": "진로 탐색 중",
+    "traits": ["미적 감각", "충동적", "살가움"],
+    "interests": ["소품샵 스크랩", "배드민턴", "숏폼 영상"],
+    "skills": ["트렌드 분석", "맛집 큐레이션", "이미지 스크랩"],
+    "goal": "자기 취향이 담긴 소품샵이나 디저트 가게를 여는 것",
+    "concern": "사업 계획서 빈칸 앞에서 막막해져 휴대폰만 만지작거린다.",
+    "locations": ["loc_plaza"],
+    "discoverConditions": [{ "type": "friendship", "personId": "person_002", "level": 1 }],
+    "discoverableInfo": [
+      { "id": "person_020_info_1", "text": "광장 벤치에서 휴대폰으로 전국 소품샵 사진을 모으는 열아홉 살." },
+      { "id": "person_020_info_2", "text": "학교를 벗어난 뒤 자기만의 길을 찾는 중이다. 주변의 기대가 조금 무겁다." },
+      { "id": "person_020_info_3", "text": "부모님 잔소리에 방문을 닫아 버리다가도 외식 자리에서는 금세 살갑다.", "unlock": [{ "type": "friendship", "personId": "person_020", "level": 1 }] },
+      { "id": "person_020_info_4", "text": "불안할 때는 배드민턴 셔틀콕을 있는 힘껏 때린다.", "unlock": [{ "type": "friendship", "personId": "person_020", "level": 2 }] },
+      { "id": "person_020_info_5", "text": "사실 첫 가게 이름은 정해 두었다. 말하면 촌스럽다고 할까 봐 비밀이다.", "unlock": [{ "type": "friendship", "personId": "person_020", "level": 3 }] }
+    ],
+    "talks": [
+      { "id": "person_020_talk_1", "text": "\"이 광장 벤치 색 너무 예쁘지 않아요? 저 이거 저장해 놨어요.\"" },
+      {
+        "id": "person_020_talk_2",
+        "text": "\"유아 언니 구움과자 먹어 봤어요? 저 그거 배우고 싶어요. 언니는 부끄러워서 안 가르쳐 준대요.\"",
+        "conditions": [{ "type": "friendship", "personId": "person_020", "level": 1 }],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_023" }]
+      },
+      {
+        "id": "person_020_talk_3",
+        "text": "\"극장에서 고은 언니 만났어요! 무대 소품 얘기하다가 한 시간 지났어요.\"",
+        "conditions": [
+          { "type": "friendship", "personId": "person_020", "level": 2 },
+          { "type": "person_discovered", "personId": "person_013" }
+        ],
+        "effects": [{ "type": "discover_relationship", "relationshipId": "rel_018" }]
+      }
+    ],
+    "rarity": "common",
+    "source": { "dataset": "nemotron-personas-korea", "uuid": "0a2d8afbb82f48d7a5b6b53565ca6204" }
+  }
+]

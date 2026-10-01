@@ -1,0 +1,25 @@
+{
+  "candidatesFile": "generated/persona-candidates.json",
+  "selection": [
+    { "personId": "person_001", "candidateId": "cand_loc_cafe_08", "locations": ["loc_cafe"] },
+    { "personId": "person_002", "candidateId": "cand_loc_cafe_04", "locations": ["loc_cafe", "loc_market"] },
+    { "personId": "person_003", "candidateId": "cand_loc_cafe_05", "locations": ["loc_cafe"] },
+    { "personId": "person_004", "candidateId": "cand_loc_market_04", "locations": ["loc_market"] },
+    { "personId": "person_005", "candidateId": "cand_loc_market_07", "locations": ["loc_market"] },
+    { "personId": "person_006", "candidateId": "cand_loc_market_02", "locations": ["loc_market"] },
+    { "personId": "person_007", "candidateId": "cand_loc_library_01", "locations": ["loc_library"] },
+    { "personId": "person_008", "candidateId": "cand_loc_library_04", "locations": ["loc_library"] },
+    { "personId": "person_009", "candidateId": "cand_loc_library_02", "locations": ["loc_library"] },
+    { "personId": "person_010", "candidateId": "cand_loc_community_center_07", "locations": ["loc_community_center"] },
+    { "personId": "person_011", "candidateId": "cand_loc_community_center_04", "locations": ["loc_community_center"] },
+    { "personId": "person_012", "candidateId": "cand_loc_theater_02", "locations": ["loc_theater"] },
+    { "personId": "person_013", "candidateId": "cand_loc_theater_05", "locations": ["loc_theater"] },
+    { "personId": "person_014", "candidateId": "cand_loc_theater_03", "locations": ["loc_theater"] },
+    { "personId": "person_015", "candidateId": "cand_loc_plaza_07", "locations": ["loc_plaza"] },
+    { "personId": "person_016", "candidateId": "cand_loc_plaza_02", "locations": ["loc_plaza"] },
+    { "personId": "person_017", "candidateId": "cand_loc_plaza_06", "locations": ["loc_plaza"] },
+    { "personId": "person_018", "candidateId": "cand_residents_10", "locations": ["loc_plaza"] },
+    { "personId": "person_019", "candidateId": "cand_residents_06", "locations": ["loc_library"] },
+    { "personId": "person_020", "candidateId": "cand_residents_03", "locations": ["loc_plaza"] }
+  ]
+}

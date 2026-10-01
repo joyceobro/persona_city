@@ -1,0 +1,378 @@
+[
+  {
+    "id": "quest_001",
+    "title": "새 메뉴의 짝꿍",
+    "description": "인주은이 새 핸드드립 메뉴에 곁들일 디저트를 찾고 있다. 동네에서 직접 만든 것이면 좋겠다고 한다.",
+    "category": "personal",
+    "giverId": "person_001",
+    "relatedPersonIds": ["person_001", "person_002", "person_005"],
+    "solutions": [
+      {
+        "id": "quest_001_a",
+        "title": "제빵사의 쌀 구움과자",
+        "description": "정유아의 쫀득한 구움과자를 새 메뉴와 함께 낸다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_002", "level": 1 }, "label": "제빵사 정유아와 아는 사이" }
+        ],
+        "rewards": [{ "type": "friendship_xp", "personId": "person_002", "amount": 20 }]
+      },
+      {
+        "id": "quest_001_b",
+        "title": "떡집의 말차 크림치즈떡",
+        "description": "시장 떡집의 퓨전 떡을 커피와 함께 낸다. 의외의 조합이 입소문을 탄다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_005", "level": 1 }, "label": "떡집 조주은과 아는 사이" }
+        ],
+        "revealConditions": [{ "type": "person_discovered", "personId": "person_005" }],
+        "rewards": [
+          { "type": "friendship_xp", "personId": "person_005", "amount": 20 },
+          { "type": "discover_relationship", "relationshipId": "rel_002" }
+        ]
+      }
+    ],
+    "rewards": [
+      { "type": "friendship_xp", "personId": "person_001", "amount": 30 },
+      { "type": "discover_info", "infoId": "person_001_info_5" },
+      { "type": "discover_person", "personId": "person_003" }
+    ]
+  },
+  {
+    "id": "quest_002",
+    "title": "오래된 극장을 살려라",
+    "description": "1968년에 문을 연 해온극장이 다음 달 폐관한다. 모두 아쉬워하지만 누구도 이 극장이 왜 남아야 하는지 말하지 못한다.",
+    "category": "community",
+    "giverId": "person_016",
+    "relatedPersonIds": ["person_016", "person_012", "person_017", "person_014", "person_008", "person_018", "person_001", "person_006", "person_013"],
+    "solutions": [
+      {
+        "id": "quest_002_a",
+        "title": "지역신문에 알리기",
+        "description": "개관일의 생생한 증언과 옛 기록을 엮어 김창영이 특집 기사를 낸다. 여론이 움직인다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_016", "level": 2 }, "label": "기자 김창영과 친구 사이" },
+          { "condition": { "type": "relationship_discovered", "relationshipId": "rel_009" }, "label": "기자에게 기사 쓰는 법을 가르친 선배를 안다" },
+          { "condition": { "type": "info_discovered", "infoId": "person_008_info_5" }, "label": "극장 개관일을 기억하는 사람의 증언" }
+        ],
+        "rewards": [
+          { "type": "friendship_xp", "personId": "person_016", "amount": 40 },
+          { "type": "friendship_xp", "personId": "person_018", "amount": 30 }
+        ]
+      },
+      {
+        "id": "quest_002_b",
+        "title": "건축 가치 조사",
+        "description": "옛 간판 사진에 찍힌 원래 외벽을 근거로 오지훈이 극장의 구조적 가치를 증명한다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_017", "level": 2 }, "label": "건축감리사 오지훈과 친구 사이" },
+          { "condition": { "type": "person_discovered", "personId": "person_014" }, "label": "극장 옛 모습을 찍은 사진가를 안다" },
+          { "condition": { "type": "info_discovered", "infoId": "person_014_info_5" }, "label": "1970년대 극장 외벽이 찍힌 필름" }
+        ],
+        "revealConditions": [{ "type": "person_discovered", "personId": "person_017" }],
+        "rewards": [
+          { "type": "friendship_xp", "personId": "person_017", "amount": 40 },
+          { "type": "friendship_xp", "personId": "person_014", "amount": 30 }
+        ]
+      },
+      {
+        "id": "quest_002_c",
+        "title": "주민 상영회",
+        "description": "카페와 시장 상인회가 힘을 모아 극장에서 주민 상영회를 연다. 객석이 가득 찬 사진 한 장이 폐관을 멈춘다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_012", "level": 2 }, "label": "연출 보조 이병열과 친구 사이" },
+          { "condition": { "type": "friendship", "personId": "person_001", "level": 2 }, "label": "카페 바리스타 인주은과 친구 사이" },
+          { "condition": { "type": "friendship", "personId": "person_006", "level": 2 }, "label": "시장 상인회를 움직일 수 있는 사람과 친구 사이" },
+          { "condition": { "type": "friendship", "personId": "person_013", "level": 2 }, "label": "낡은 무대를 꾸며 줄 사람과 친구 사이" }
+        ],
+        "revealConditions": [{ "type": "friendship", "personId": "person_012", "level": 1 }],
+        "rewards": [
+          { "type": "friendship_xp", "personId": "person_012", "amount": 40 },
+          { "type": "friendship_xp", "personId": "person_006", "amount": 30 },
+          { "type": "discover_relationship", "relationshipId": "rel_019" }
+        ]
+      }
+    ],
+    "rewards": [
+      { "type": "discover_info", "infoId": "person_013_info_5" },
+      { "type": "friendship_xp", "personId": "person_013", "amount": 30 },
+      { "type": "unlock_quest", "questId": "quest_006" }
+    ]
+  },
+  {
+    "id": "quest_003",
+    "title": "사랑방 커피 코너",
+    "description": "김춘호가 잡화점 한쪽에 의자 두 개와 커피 기계를 놓고 싶어 한다. 문제는 커피를 아는 사람이 없다는 것.",
+    "category": "local",
+    "giverId": "person_006",
+    "relatedPersonIds": ["person_006", "person_003", "person_001"],
+    "solutions": [
+      {
+        "id": "quest_003_a",
+        "title": "깐깐한 매니저를 소개하기",
+        "description": "일자리를 찾던 이태현이 커피 코너를 맡는다. 0.1그램 단위의 레시피가 시장에 생긴다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_003", "level": 1 }, "label": "전직 음료 조리사 이태현과 아는 사이" },
+          { "condition": { "type": "friendship", "personId": "person_006", "level": 1 }, "label": "잡화점 주인 김춘호와 아는 사이" }
+        ],
+        "revealConditions": [{ "type": "person_discovered", "personId": "person_003" }],
+        "rewards": [
+          { "type": "discover_relationship", "relationshipId": "rel_004" },
+          { "type": "friendship_xp", "personId": "person_003", "amount": 50 }
+        ]
+      },
+      {
+        "id": "quest_003_b",
+        "title": "카페 원두 납품",
+        "description": "인주은이 원두와 간단한 추출법을 전해 준다. 카페와 시장 사이에 작은 길이 생긴다.",
+        "requirements": [
+          { "condition": { "type": "friendship", "personId": "person_001", "level": 2 }, "label": "카페 바리스타 인주은과 친구 사이" }
+        ],
+        "rewards": [
+          { "type": "friendship_xp", "personId": "person_001", "amount": 20 }
+        ]
+      }
+    ],
+    "rewards": [
+      { "type": "friendship_xp", "personId": "person_006", "amount": 40 }
+    ]
+  },
+  {
+    "id": "quest_004",
+    "title": "골목 기록집",
+    "description": "이동정이 수십 년 동안 받아 적은 이웃들의 이야기가 원고 더미로 쌓여 있다. 책이 되지 못하면 이 골목의 기억도 함께 사라진다.",
+    "category": "local",
+    "giverId": "person_008",
+    "relatedPersonIds": ["person_008", "person_009", "person_014", "person_018"],
+    "solutions": [
+      {
+        "id": "quest_004_a",
+        "title": "편집자와 책으로 묶기",
+        "description": "김광섭이 원고를 교정하고 인쇄소 반장님들을 설득해 작은 문고본을 만든다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_008", "level": 2}, "label": "작가 이동정과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_009", "level": 2}, "label": "편집자 김광섭과 친구 사이"}
+        ],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_009", "amount": 40}
+        ]
+      },
+      {
+        "id": "quest_004_b",
+        "title": "사진이 있는 기록집",
+        "description": "홍혜선의 골목 사진을 글 사이사이에 넣는다. 오래전 같은 문예지에 실렸던 두 사람의 작업이 다시 만난다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_014", "level": 2}, "label": "사진가 홍혜선과 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_030"}, "label": "작가와 사진가의 오랜 인연을 안다"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_014"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_014", "amount": 40}
+        ]
+      },
+      {
+        "id": "quest_004_c",
+        "title": "블로그와 합치기",
+        "description": "이영만의 노포 사진 일기와 원고를 엮는다. 대학 신문사 선배였던 김광섭이 편집을 맡는다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_018", "level": 2}, "label": "골목 기록가 이영만과 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_032"}, "label": "기록가와 편집자의 옛 인연을 안다"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_018"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_018", "amount": 40},
+          {"type": "friendship_xp", "personId": "person_009", "amount": 20}
+        ]
+      }
+    ],
+    "rewards": [
+      {"type": "friendship_xp", "personId": "person_008", "amount": 40},
+      {"type": "discover_info", "infoId": "person_008_info_6"}
+    ]
+  },
+  {
+    "id": "quest_005",
+    "title": "비 새는 집",
+    "description": "이용석의 월세방 천장에서 비가 샌다. 집주인은 연락이 안 되고, 아내에게는 비밀이다.",
+    "category": "personal",
+    "giverId": "person_004",
+    "relatedPersonIds": ["person_004", "person_017", "person_010", "person_011"],
+    "solutions": [
+      {
+        "id": "quest_005_a",
+        "title": "감리사에게 부탁하기",
+        "description": "오지훈이 천장 구조를 살펴보고, 집주인에게 보낼 보수 요청서를 법규에 맞게 써 준다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_017", "level": 2}, "label": "건축감리사 오지훈과 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_025"}, "label": "감리사가 천장을 봐 주기로 한 사이"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_017"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_017", "amount": 30}
+        ]
+      },
+      {
+        "id": "quest_005_b",
+        "title": "주민센터 주거 지원",
+        "description": "박순옥이 사정을 듣고, 신홍준이 노후 주택 긴급 수리 지원 서류를 하루 만에 올린다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_011", "level": 2}, "label": "생활지원사 박순옥과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_010", "level": 1}, "label": "주민센터 주무관 신홍준과 아는 사이"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_010"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_010", "amount": 30},
+          {"type": "discover_relationship", "relationshipId": "rel_045"}
+        ]
+      }
+    ],
+    "rewards": [
+      {"type": "friendship_xp", "personId": "person_004", "amount": 40},
+      {"type": "discover_info", "infoId": "person_004_info_6"}
+    ]
+  },
+  {
+    "id": "quest_006",
+    "title": "무대 뒤의 일자리",
+    "description": "극장은 살아남았지만 이고은의 구직은 아직 끝나지 않았다. 자기 색깔을 보여 줄 첫 무대가 필요하다.",
+    "category": "personal",
+    "giverId": "person_013",
+    "relatedPersonIds": ["person_013", "person_012", "person_015", "person_001", "person_020"],
+    "solutions": [
+      {
+        "id": "quest_006_a",
+        "title": "극장 무대 복원",
+        "description": "이병열이 재개관 공연의 무대를 이고은에게 맡기자고 극장주를 설득한다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_012", "level": 3}, "label": "연출 보조 이병열과 가까운 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_013", "level": 2}, "label": "이고은과 친구 사이"}
+        ],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_012", "amount": 30}
+        ]
+      },
+      {
+        "id": "quest_006_b",
+        "title": "무대의상 바느질 도제",
+        "description": "권경자에게 무대의상 수선을 배우며 극장 의상실을 맡는다. 재봉틀 앞에서 새 일이 시작된다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_015", "level": 2}, "label": "수선집 권경자와 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_037"}, "label": "수선집 할머니가 바느질을 가르쳐 주는 사이"}
+        ],
+        "revealConditions": [{"type": "friendship", "personId": "person_015", "level": 2}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_015", "amount": 30}
+        ]
+      },
+      {
+        "id": "quest_006_c",
+        "title": "카페 팝업 연출",
+        "description": "인주은의 카페 한쪽을 이고은이 꾸미고, 김하연이 소품을 고른다. 작은 팝업이 포트폴리오가 된다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_001", "level": 2}, "label": "카페 바리스타 인주은과 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_018"}, "label": "소품 취향이 통하는 친구가 있다"}
+        ],
+        "revealConditions": [{"type": "relationship_discovered", "relationshipId": "rel_018"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_020", "amount": 30},
+          {"type": "friendship_xp", "personId": "person_001", "amount": 20}
+        ]
+      }
+    ],
+    "rewards": [
+      {"type": "friendship_xp", "personId": "person_013", "amount": 50}
+    ]
+  },
+  {
+    "id": "quest_007",
+    "title": "말수가 줄어든 이웃",
+    "description": "혼자 사는 이승찬의 말수가 부쩍 줄었다. 박순옥은 그에게 작은 역할 하나가 필요하다고 생각한다.",
+    "category": "community",
+    "giverId": "person_011",
+    "relatedPersonIds": ["person_011", "person_019", "person_007", "person_014"],
+    "solutions": [
+      {
+        "id": "quest_007_a",
+        "title": "향토자료실 정리 봉사",
+        "description": "이이랑이 향토자료실의 옛 신문 정리를 공식 봉사 자리로 만든다. 이승찬이 매주 목요일 자료실에 나온다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_007", "level": 2}, "label": "사서 이이랑과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_019", "level": 1}, "label": "이승찬과 아는 사이"}
+        ],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_007", "amount": 30}
+        ]
+      },
+      {
+        "id": "quest_007_b",
+        "title": "사진 해설 작업",
+        "description": "홍혜선의 사진마다 이승찬이 짧은 미술사 해설을 붙인다. 오랜만에 누군가 그의 글을 기다린다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_014", "level": 2}, "label": "사진가 홍혜선과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_019", "level": 2}, "label": "이승찬과 친구 사이"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_014"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_014", "amount": 20},
+          {"type": "discover_relationship", "relationshipId": "rel_041"}
+        ]
+      }
+    ],
+    "rewards": [
+      {"type": "friendship_xp", "personId": "person_019", "amount": 50},
+      {"type": "friendship_xp", "personId": "person_011", "amount": 20},
+      {"type": "discover_info", "infoId": "person_019_info_5"}
+    ]
+  },
+  {
+    "id": "quest_008",
+    "title": "밤마다 걸려 오는 전화",
+    "description": "박순옥은 밤마다 이웃들에게 안부 전화를 건다. 권경자는 그것이 사실 박순옥 자신의 외로움이라는 걸 안다.",
+    "category": "personal",
+    "giverId": "person_015",
+    "relatedPersonIds": ["person_015", "person_011", "person_014", "person_008", "person_010"],
+    "solutions": [
+      {
+        "id": "quest_008_a",
+        "title": "잠 못 드는 사진가 소개",
+        "description": "새벽 물안개를 찍으러 나가는 홍혜선에게 박순옥을 소개한다. 밤 전화의 상대가 서로가 된다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_014", "level": 2}, "label": "사진가 홍혜선과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_011", "level": 2}, "label": "박순옥과 친구 사이"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_014"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_014", "amount": 20}
+        ]
+      },
+      {
+        "id": "quest_008_b",
+        "title": "글쓰기 모임에 초대",
+        "description": "이동정이 박순옥을 복지관 글쓰기 모임에 초대한다. 처음으로 남의 이야기가 아닌 자기 이야기를 쓴다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_008", "level": 2}, "label": "작가 이동정과 친구 사이"},
+          {"condition": {"type": "relationship_discovered", "relationshipId": "rel_031"}, "label": "작가와 생활지원사가 봉사로 만난 사이"}
+        ],
+        "revealConditions": [{"type": "person_discovered", "personId": "person_008"}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_008", "amount": 20}
+        ]
+      },
+      {
+        "id": "quest_008_c",
+        "title": "쉬는 날 만들어 주기",
+        "description": "신홍준이 근무표를 다시 짜서 박순옥에게 온전한 휴일을 만든다. 그날 박순옥은 처음으로 자녀 집에 먼저 찾아간다.",
+        "requirements": [
+          {"condition": {"type": "friendship", "personId": "person_010", "level": 2}, "label": "주무관 신홍준과 친구 사이"},
+          {"condition": {"type": "friendship", "personId": "person_011", "level": 3}, "label": "박순옥과 가까운 친구 사이"}
+        ],
+        "revealConditions": [{"type": "friendship", "personId": "person_010", "level": 1}],
+        "rewards": [
+          {"type": "friendship_xp", "personId": "person_010", "amount": 20}
+        ]
+      }
+    ],
+    "rewards": [
+      {"type": "friendship_xp", "personId": "person_011", "amount": 50},
+      {"type": "discover_info", "infoId": "person_011_info_5"}
+    ]
+  }
+]
